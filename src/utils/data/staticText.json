@@ -1,0 +1,30 @@
+{
+  "header": {
+    "searchPlaceholder": {
+      "en": "Search",
+      "ar": "ابحث"
+    }
+  },
+  "home": {
+    "hero": {
+      "brand": {
+        "first": {
+          "en": "Avoid Scam.",
+          "ar": "تجنب المحتالين."
+        },
+        "second": {
+          "en": "Shop Safely.",
+          "ar": "تسوق بشكل آمن."
+        },
+        "third": {
+          "en": "Be in control.",
+          "ar": "كن متحكمًا."
+        }
+      },
+      "button": {
+        "en": "Search now",
+        "ar": "ابحث الآن"
+      }
+    }
+  }
+}
