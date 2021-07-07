@@ -1,19 +1,23 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
 
-import { changeLanguage } from './redux/actions/language';
-import { toggleDarkTheme } from './redux/actions/darkTheme';
+import { Header } from './components';
+import theme from './utils/data/theme.json';
 
-const App = ({ changeLanguage, toggleDarkTheme, language, darkTheme }) => {
-  return <div>Rating</div>;
+const App = ({ darkTheme: dark, language }) => {
+  useEffect(() => {
+    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = language;
+  }, [language]);
+
+  return (
+    <ThemeProvider theme={{ ...theme, dark }}>
+      <Header />
+    </ThemeProvider>
+  );
 };
 
-const mapDispatchToProps = dispatch => ({
-  changeLanguage: lang => dispatch(changeLanguage(lang)),
-  toggleDarkTheme: () => dispatch(toggleDarkTheme())
-});
+const mapStateToProps = ({ darkTheme, language }) => ({ darkTheme, language });
 
-const mapStateToProps = ({ language, darkTheme }) => ({ language, darkTheme });
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);
