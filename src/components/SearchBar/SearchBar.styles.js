@@ -53,6 +53,9 @@ export default styled(Input)`
       z-index: 2;
 
       .ui.segment.suggestion {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         cursor: pointer;
         color: ${({ theme }) => theme.black700};
       }
