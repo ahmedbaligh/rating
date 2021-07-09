@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './data';
 
 const GlobalStyles = createGlobalStyle`
   *, *::before, *::after {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body, h1, h2, h3, h4, div, p, section, header, main, hr {
@@ -11,12 +13,27 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font: 600 16px 'Montserrat', sans-serif;
+    font: ${theme.font.all};
   }
 
   img {
     width: 100%;
     height: auto;
+  }
+
+  input, button {
+    appearance: none;
+    border: none;
+    outline: none;
+  }
+
+  input:focus {
+    transition: ${theme.transitionDuration};
+    border-color: ${theme.blue700} !important;
+  }
+
+  button {
+    cursor: pointer;
   }
 `;
 
