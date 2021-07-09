@@ -2,13 +2,17 @@ import styled from 'styled-components';
 import SearchInput from '../SearchBar/SearchBar.styles';
 
 export default styled.header`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 84px;
   padding-inline: 40px 35px;
   background: ${({ theme }) => (theme.dark ? theme.black900 : theme.blue600)};
-  transition: background 0.5s;
+  transition: background ${({ theme }) => theme.transitionDuration};
 
   .options.group:first-child {
     display: flex;
@@ -73,34 +77,37 @@ export default styled.header`
       padding-inline: 25px 20px;
     }
 
-    .options.group .header-search ${SearchInput} {
-      width: auto;
+    .options.group .header-search .search-bar {
+      ${SearchInput} {
+        width: auto;
 
-      .search {
-        cursor: pointer;
-        margin-inline-end: 0;
+        .search {
+          margin-inline-end: 0;
+        }
+
+        & > input[type='text'][placeholder] {
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+          top: -200px;
+          background-color: ${({ theme }) => theme.black700} !important;
+          border-radius: 5px !important;
+          height: 50px;
+          padding: 10px 0 !important;
+          padding-inline-start: 14px !important;
+          min-width: 0;
+          transition: 0.7s;
+        }
       }
 
-      & > input[type='text'][placeholder] {
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        top: -200px;
-        background-color: ${({ theme }) => theme.black700} !important;
-        border-radius: 5px !important;
-        height: 50px;
-        padding: 10px 0 !important;
-        padding-inline-start: 14px !important;
-        min-width: 0;
-        transition: 0.7s;
+      &.active {
+        & ${SearchInput} > input[type='text'][placeholder] {
+          top: 75px;
+          min-width: 80vw;
+        }
       }
 
-      input[type='text'][placeholder].active {
-        top: 75px;
-        min-width: 80vw;
-      }
-
-      & + .ui.segments {
+      & .ui.segments {
         transition: max-height 0.4s, opacity 0.7s;
         position: fixed;
         top: calc(75px + 50px);
@@ -108,6 +115,10 @@ export default styled.header`
         transform: translateX(-50%);
         width: 80vw;
         border: 0;
+      }
+
+      &:not(.active) .ui.segments {
+        opacity: 0;
       }
     }
   }
