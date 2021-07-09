@@ -14,13 +14,14 @@ export default styled(Input)`
       position: static;
       margin-inline-end: -25px;
       height: auto;
+      cursor: pointer;
     }
 
     & > input[type='text'][placeholder] {
       transition: width 0.5s;
       width: 114px;
       color: ${({ theme }) => theme.white900} !important;
-      font: 400 15px/1.6 'Montserrat', sans-serif;
+      font: 400 15px/1.6 ${({ theme }) => theme.font.family};
       padding: 0 !important;
       padding-inline-start: 2.7em !important;
       text-align: start;
@@ -49,6 +50,7 @@ export default styled(Input)`
       overflow: hidden;
       width: 100%;
       border: 0;
+      z-index: 2;
 
       .ui.segment.suggestion {
         overflow: hidden;

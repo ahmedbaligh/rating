@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { Header } from './components';
-import theme from './utils/data/theme.json';
+import { Footer, Header } from './components';
+import { theme } from './utils/data';
 
 const App = ({ darkTheme: dark, language }) => {
   useEffect(() => {
@@ -14,6 +14,7 @@ const App = ({ darkTheme: dark, language }) => {
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
       <Header />
+      <Footer />
     </ThemeProvider>
   );
 };

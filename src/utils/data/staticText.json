@@ -5,6 +5,114 @@
       "ar": "ابحث"
     }
   },
+  "footer": {
+    "followUs": {
+      "title": {
+        "en": "Follow us",
+        "ar": "تابعنا"
+      }
+    },
+    "subscription": {
+      "title": {
+        "en": "Subscribe to us",
+        "ar": "اشترك معنا"
+      },
+      "emailPlaceholder": {
+        "en": "Email address",
+        "ar": "البريد الإلكتروني"
+      }
+    },
+    "nav": [
+      {
+        "title": {
+          "en": "Our company",
+          "ar": "شركتنا"
+        },
+        "links": [
+          {
+            "en": "How we work",
+            "ar": "طريقة عملنا"
+          },
+          {
+            "en": "Why Rating?",
+            "ar": "لما نحن؟"
+          },
+          {
+            "en": "Reviews",
+            "ar": "التقييمات"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Useful links",
+          "ar": "روابط مفيدة"
+        },
+        "links": [
+          {
+            "en": "Categories",
+            "ar": "الفئات"
+          },
+          {
+            "en": "Brands",
+            "ar": "العلامات التجارية"
+          },
+          {
+            "en": "Stores",
+            "ar": "المتاجر"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Help me",
+          "ar": "المساعدة"
+        },
+        "links": [
+          {
+            "en": "FAQ",
+            "ar": "الأسئلة الشائعة"
+          },
+          {
+            "en": "Terms of use",
+            "ar": "شروط الاستخدام"
+          },
+          {
+            "en": "Privacy policy",
+            "ar": "سياسة الخصوصية"
+          },
+          {
+            "en": "Cookies",
+            "ar": "ملفات تعريف الارتباط"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Others",
+          "ar": "أُخرى"
+        },
+        "links": [
+          {
+            "en": "Careers",
+            "ar": "اعمل معنا"
+          },
+          {
+            "en": "Press",
+            "ar": "الإعلام"
+          },
+          {
+            "en": "Licenses",
+            "ar": "تراخيص الاستخدام"
+          }
+        ]
+      }
+    ],
+    "copyrights": {
+      "en": "© 2021 | All Rights Reserved | Rating Inc.",
+      "ar": "© ٢٠٢١ | جميع الحقوق محفوظة | شركة Rating"
+    }
+  },
   "home": {
     "hero": {
       "brand": {

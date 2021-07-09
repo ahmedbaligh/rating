@@ -7,12 +7,17 @@ import SearchInput from './SearchBar.styles';
 const SearchBar = ({ placeholder, transparent, language, display, fluid }) => {
   const [suggestions, setSuggestions] = useState([]);
 
-  const ref = useRef();
+  const searchBarRef = useRef();
+  const searchInputRef = useRef();
 
-  const activateMobileSearchBar = () => ref.current.classList.toggle('active');
+  const activateSearchBar = () => {
+    searchBarRef.current.classList.toggle('active');
+    searchInputRef.current.focus();
+    console.log(searchBarRef.current);
+  };
 
   return (
-    <>
+    <div ref={searchBarRef} className="search-bar">
       <SearchInput
         placeholder={placeholder}
         language={language}
@@ -21,8 +26,8 @@ const SearchBar = ({ placeholder, transparent, language, display, fluid }) => {
         fluid={fluid}
         onChange={e => setSuggestions(getSearchSuggestions(e.target.value))}
       >
-        <Icon name="search" onClick={activateMobileSearchBar} />
-        <input ref={ref} />
+        <Icon name="search" onClick={activateSearchBar} />
+        <input ref={searchInputRef} />
       </SearchInput>
 
       <Segment.Group>
@@ -32,7 +37,7 @@ const SearchBar = ({ placeholder, transparent, language, display, fluid }) => {
           </Segment>
         ))}
       </Segment.Group>
-    </>
+    </div>
   );
 };
 
