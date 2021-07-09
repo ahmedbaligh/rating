@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import { Header } from './components';
+import Product from './pages/Product/Product';
 import theme from './utils/data/theme.json';
 
 const App = ({ darkTheme: dark, language }) => {
@@ -14,6 +15,7 @@ const App = ({ darkTheme: dark, language }) => {
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
       <Header />
+      <Product />
     </ThemeProvider>
   );
 };

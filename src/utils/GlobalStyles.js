@@ -18,6 +18,10 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     height: auto;
   }
+  button{
+    cursor: pointer;
+  }
+  
 `;
 
 export default GlobalStyles;

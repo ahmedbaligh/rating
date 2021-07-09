@@ -26,5 +26,57 @@
         "ar": "ابحث الآن"
       }
     }
+  },
+  "product": {
+    "hero": {
+      "details": {
+        "en": "View all details",
+        "ar": "التفاصيل"
+      },
+      "rating": {
+        "name": {
+          "en": "Rating",
+          "ar": "التقييم"
+        },
+        "ratings": {
+          "en": "Ratings",
+          "ar": "تقييم"
+        }
+      },
+      "addRating": {
+        "en": "Add rating",
+        "ar": "اضافة تقييم"
+      },
+      "report": {
+        "en": "Report",
+        "ar": "ابلاغ عن مشكلة"
+      }
+    },
+    "details": {
+      "heading": {
+        "en": "Details",
+        "ar": "التفاصيل"
+      },
+      "specs": {
+        "en": "Product Specifications",
+        "ar": "المواصفات"
+      }
+    },
+    "other": {
+      "heading": {
+        "en": "Other Sellers",
+        "ar": "متاجر اخرى"
+      }
+    },
+    "reviews": {
+      "heading": {
+        "en": "Reviews",
+        "ar": "التعليقات"
+      }
+    },
+    "buy": {
+      "en": "Buy from",
+      "ar": "اشتري من"
+    }
   }
 }
