@@ -1,20 +1,6 @@
 import styled, { css } from 'styled-components';
 
 //Hero start
-export const PageHero = styled.section`
-  display: flex;
-  gap: 18px;
-  padding-inline-start: 108px;
-  padding-block-start: 18px;
-  padding-block-end: 72px;
-  padding-inline-end: 0;
-  align-items: center;
-  width: 100%;
-  height: fit-content;
-  background-color: ${({ theme }) =>
-    theme.dark ? theme.black900 : theme.blue500};
-  transition: background 0.5s;
-`;
 export const MainInfo = styled.section`
   display: flex;
   flex-direction: column;
@@ -31,6 +17,7 @@ export const ImgGallary = styled.section`
   height: 100%;
   padding: 36px 0;
   padding-inline-end: 90px;
+  padding-inline-start: 108px;
   border-start-start-radius: 480px;
   border-end-start-radius: 480px;
   background-color: ${({ theme }) => theme.blue500};
@@ -177,6 +164,57 @@ export const Feedback = styled.div`
     color: ${({ theme }) => (theme.dark ? theme.gray100 : theme.blue400)};
   }
 `;
+export const PageHero = styled.section`
+  display: flex;
+  gap: 18px;
+  padding-inline-start: 108px;
+  padding-block-start: 18px;
+  padding-block-end: 72px;
+  padding-inline-end: 0;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  background-color: ${({ theme }) =>
+    theme.dark ? theme.black900 : theme.blue500};
+  transition: background 0.5s;
+
+  @media only screen and (max-width: 1080px) {
+    ${ImgGallary} {
+      padding-inline-end: 54px;
+    }
+  }
+
+  @media only screen and (max-width: 820px) {
+    padding-inline-start: 54px;
+
+    ${ProductName} {
+      font-size: 1.5rem;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    flex-direction: column;
+    ${ImgGallary} {
+      align-self: flex-end;
+    }
+    ${MainInfo} {
+      padding-inline-end: 54px;
+    }
+  }
+  @media only screen and (max-width: 430px) {
+    padding-inline-start: 36px;
+    ${ImgGallary} {
+      padding-block: 18px;
+    }
+    ${MainInfo} {
+      padding-inline-end: 36px;
+    }
+    ${RatingSection} {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+`;
+
 //Hero end
 
 //Details start
@@ -217,6 +255,27 @@ export const Details = styled.section`
       font-weight: 600;
     }
   }
+
+  @media only screen and (max-width: 820px) {
+    padding-inline: 54px;
+  }
+
+  @media only screen and (max-width: 750px) {
+    table {
+      td {
+        padding-inline-start: 72px;
+        padding-block-start: 9px;
+      }
+
+      th {
+        padding-block-start: 9px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 430px) {
+    padding-inline: 36px;
+  }
 `;
 //Details end
 
@@ -243,6 +302,7 @@ export const OtherSellers = styled.section`
     flex-wrap: wrap;
     gap: 3rem;
     width: 1080px;
+    max-width: 100%;
   }
   button {
     text-align: center;
@@ -261,6 +321,14 @@ export const OtherSellers = styled.section`
             border: 1px solid ${({ theme }) => theme.blue700};
             border-radius: 36px;
           `}
+  }
+
+  @media only screen and (max-width: 820px) {
+    padding-inline: 54px;
+  }
+
+  @media only screen and (max-width: 430px) {
+    padding-inline: 36px;
   }
 `;
 export const SellerCard = styled.div`
@@ -358,6 +426,17 @@ export const Reviews = styled.section`
       &:disabled {
         color: ${({ theme }) => (theme.dark ? theme.gray800 : theme.gray700)};
       }
+    }
+  }
+
+  @media only screen and (max-width: 820px) {
+    padding-inline: 54px;
+  }
+
+  @media only screen and (max-width: 430px) {
+    padding-inline: 36px;
+    .controller {
+      gap: 42px;
     }
   }
 `;

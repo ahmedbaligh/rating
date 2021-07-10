@@ -37,6 +37,7 @@ const GlobalStyles = createGlobalStyle`
   button {
     cursor: pointer;
     font-family: inherit;
+    white-space: nowrap;
   }
   
 `;
