@@ -265,7 +265,7 @@ export const OtherSellers = styled.section`
 `;
 export const SellerCard = styled.div`
   position: relative;
-  z-index: 10;
+  z-index: 3;
   background-color: ${({ theme }) =>
     theme.dark ? theme.black900 : theme.blue400};
   display: flex;
