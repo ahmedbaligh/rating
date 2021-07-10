@@ -66,12 +66,24 @@
       "heading": {
         "en": "Other Sellers",
         "ar": "متاجر اخرى"
+      },
+      "showAll": {
+        "en": "Show all sellers",
+        "ar": "عرض كل المتاجر"
       }
     },
     "reviews": {
       "heading": {
         "en": "Reviews",
         "ar": "التعليقات"
+      },
+      "prev": {
+        "en": "< Previous Reviews",
+        "ar": "التعليقات السابقة >"
+      },
+      "next": {
+        "en": "Next Reviews >",
+        "ar": " المزيد من التعليقات >"
       }
     },
     "buy": {
