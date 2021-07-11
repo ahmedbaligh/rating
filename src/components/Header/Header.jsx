@@ -17,7 +17,7 @@ const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
         <NavToggler closable />
         <Dropdown
           options={languages}
-          defaultValue={language}
+          value={language}
           onChange={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
         />
       </div>
