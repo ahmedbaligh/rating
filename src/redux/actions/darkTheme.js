@@ -4,7 +4,7 @@ import { updateUser } from '../../utils/api';
 export const TOGGLE_DARK_THEME = 'TOGGLE_DARK_THEME';
 
 export const toggleDarkThemeAction = () => {
-  const currentDark = JSON.parse(localStorage.getItem('dark'));
+  const currentDark = store.getState().darkTheme;
   localStorage.setItem('dark', !currentDark);
   return { type: TOGGLE_DARK_THEME };
 };
