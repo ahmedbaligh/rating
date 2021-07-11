@@ -6,10 +6,10 @@ const authedUser = (state = null, action) => {
   switch (action.type) {
     case SET_AUTHED_USER:
       return action.user;
-    case TOGGLE_DARK_THEME && state:
-      return { ...state, darkTheme: !state.darkTheme };
-    case CHANGE_LANGUAGE && state:
-      return { ...state, language: action.language };
+    case TOGGLE_DARK_THEME:
+      return state ? { ...state, darkTheme: !state.darkTheme } : state;
+    case CHANGE_LANGUAGE:
+      return state ? { ...state, language: action.language } : state;
     case LOG_OUT:
       return null;
     default:

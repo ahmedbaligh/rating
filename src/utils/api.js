@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+import { getAuthedUser } from '../redux/actions/authedUser';
+import store from '../redux/store';
+
 export const apiRequest = axios.create({
   baseURL: 'http://amr11mahmoud-001-site1.etempurl.com',
   headers: { 'Content-Type': 'application/json' }
@@ -20,16 +23,23 @@ export const register = ({ name, username, email, password }) =>
     }
   });
 
-export const login = ({ username, password, rememberMe }) =>
-  apiRequest({
+export const login = ({ username, password }) => {
+  return apiRequest({
     method: 'POST',
     url: '/api/TokenAuth/Authenticate',
     data: {
       userNameOrEmailAddress: username,
       password: password,
-      rememberClient: rememberMe
+      rememberClient: true
     }
+  }).then(res => {
+    const TOKEN = 'Bearer ' + res.data.result.accessToken;
+    apiRequest.defaults.headers.common['Authorization'] = TOKEN;
+    localStorage.setItem('token', TOKEN);
+
+    store.dispatch(getAuthedUser());
   });
+};
 
 export const getUser = async () => {
   const res = await apiRequest({
