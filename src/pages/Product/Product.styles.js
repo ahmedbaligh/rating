@@ -342,8 +342,8 @@ export const SellerCard = styled.div`
   justify-content: center;
   text-align: center;
   gap: 2rem;
-  height: 360px;
-  width: 300px;
+  height: 430px;
+  width: 326px;
   max-width: 100%;
   color: ${({ theme }) => (theme.dark ? theme.white900 : theme.gray700)};
   font-weight: 400;
