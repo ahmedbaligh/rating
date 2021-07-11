@@ -50,13 +50,8 @@ const App = ({
   ]);
 
   useEffect(() => {
-    localStorage.setItem('dark', dark);
-  }, [dark]);
-
-  useEffect(() => {
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
-    localStorage.setItem('language', language);
   }, [language]);
 
   return (
