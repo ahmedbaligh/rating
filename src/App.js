@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { Footer, Header } from './components';
+import { Home } from './pages';
+import { Header } from './components';
 import { theme } from './utils/data';
 import Product from './pages/Product/Product';
 
@@ -57,8 +58,7 @@ const App = ({
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
       <Header />
-      <Product />
-      <Footer />
+      <Home />
     </ThemeProvider>
   );
 };
