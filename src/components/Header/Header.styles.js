@@ -11,7 +11,7 @@ export default styled.header`
   justify-content: space-between;
   height: 84px;
   padding-inline: 40px 35px;
-  background: ${({ theme }) => (theme.dark ? theme.black900 : theme.blue600)};
+  background: ${({ theme }) => (theme.dark ? theme.black900 : theme.blue500)};
   transition: background ${({ theme }) => theme.transitionDuration};
 
   .options.group:first-child {
