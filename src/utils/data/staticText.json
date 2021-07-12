@@ -115,23 +115,93 @@
   },
   "home": {
     "hero": {
-      "brand": {
-        "first": {
+      "brandText": [
+        {
           "en": "Avoid Scam.",
-          "ar": "تجنب المحتالين."
+          "ar": "تجنب المُحتالين."
         },
-        "second": {
+        {
           "en": "Shop Safely.",
-          "ar": "تسوق بشكل آمن."
+          "ar": "تسوق بشكلٍ آمن."
         },
-        "third": {
+        {
           "en": "Be in control.",
-          "ar": "كن متحكمًا."
+          "ar": "تولىّ التحكم."
         }
-      },
+      ],
       "button": {
         "en": "Search now",
         "ar": "ابحث الآن"
+      }
+    },
+    "search": {
+      "heading": {
+        "en": "Discover the best deals and sales in Egypt!",
+        "ar": "اكتشف أفضل العروض والخصومات في مصر!"
+      },
+      "searchPlaceholder": {
+        "en": "What are you looking for?",
+        "ar": "ما الذي تريد البحث عنه؟"
+      },
+      "button": {
+        "en": "Search",
+        "ar": "ابحث"
+      }
+    },
+    "categories": {
+      "names": [
+        {
+          "name": {
+            "en": "All categories",
+            "ar": "كل الفئات"
+          }
+        },
+        {
+          "name": {
+            "en": "Smartphones",
+            "ar": "الهواتف الذكية"
+          }
+        },
+        {
+          "name": {
+            "en": "Fashion",
+            "ar": "الموضة"
+          }
+        },
+        {
+          "name": {
+            "en": "Computers",
+            "ar": "الحواسيب"
+          }
+        },
+        {
+          "name": {
+            "en": "Sports",
+            "ar": "الرياضة"
+          }
+        }
+      ],
+      "countUnit": {
+        "en": "products",
+        "ar": "منتج"
+      }
+    },
+    "newsletter": {
+      "heading": {
+        "en": "Chance to win a $200 shopping gift card!",
+        "ar": "فرصة للفوز بقسيمة مشتريات بقيمة ٢٠٠ دولار! "
+      },
+      "description": {
+        "en": "Subscribe to Rating’s newsletter and get a chance to win $200.",
+        "ar": "اشترك في نشرتنا واحصل على فرصة للفوز بـ ٢٠٠ دولار."
+      },
+      "emailPlaceholder": {
+        "en": "Email address",
+        "ar": "البريد الإلكتروني"
+      },
+      "button": {
+        "en": "Subscribe",
+        "ar": "اشترك"
       }
     }
   }

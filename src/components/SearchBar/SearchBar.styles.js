@@ -2,11 +2,11 @@ import { Input } from 'semantic-ui-react';
 import styled, { css } from 'styled-components';
 
 export default styled(Input)`
-  &.ui.transparent.input {
+  &.ui.input {
     display: flex !important;
     color: ${({ theme }) => theme.white700};
 
-    .search {
+    .search.icon {
       font-size: 23px;
       transform: rotate(
         ${({ language }) => (language === 'ar' ? '90deg ' : '0deg')}
