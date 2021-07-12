@@ -2,12 +2,12 @@ import React from 'react';
 
 import Selection from './Dropdown.styles';
 
-const Dropdown = ({ options, defaultValue, onChange, size }) => (
+const Dropdown = ({ options, value, onChange, size }) => (
   <Selection
     onChange={onChange}
     inline
     options={options}
-    defaultValue={defaultValue}
+    value={value}
     size={size}
   />
 );
