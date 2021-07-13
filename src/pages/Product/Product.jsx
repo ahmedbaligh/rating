@@ -1,14 +1,14 @@
 import React, { useState, useRef } from 'react';
 import { Link, useParams, Redirect } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
 import { staticText } from '../../utils/data';
-
 import { useDidMount } from '../../hooks';
-
 import { getProduct, getCategoryTree } from '../../utils/api';
 import { jsonParse } from '../../utils/helpers/helpers';
+
+import { Loading } from '../../components';
+import { Rating } from 'semantic-ui-react';
 
 import {
   ProductPage,
@@ -28,9 +28,7 @@ import {
   Review
 } from './Product.styles';
 
-import { Rating, Dimmer, Loader, Segment } from 'semantic-ui-react';
-
-const Product = ({ language, darkTheme }) => {
+const Product = ({ language }) => {
   const [lastViewableReview, setLastViewableReview] = useState(0);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -100,11 +98,7 @@ const Product = ({ language, darkTheme }) => {
 
   return loading ? (
     <ProductPage>
-      <Segment>
-        <Dimmer active inverted={!darkTheme}>
-          <Loader>Loading</Loader>
-        </Dimmer>
-      </Segment>
+      <Loading />
     </ProductPage>
   ) : !product ? (
     <Redirect to="/404-NOT-FOUND" />

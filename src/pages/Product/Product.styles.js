@@ -485,11 +485,6 @@ export const Review = styled.div`
 `;
 
 export const ProductPage = styled.main`
-  width: 100%;
-  height: 100%;
   background-color: ${({ theme }) =>
     theme.dark ? theme.black900 : theme.white900};
-  .ui.segment {
-    height: 480px;
-  }
 `;
