@@ -11,6 +11,7 @@ import { getProduct, getCategoryTree } from '../../utils/api';
 import { jsonParse } from '../../utils/helpers/helpers';
 
 import {
+  ProductPage,
   PageHero,
   MainInfo,
   ImgGallary,
@@ -27,9 +28,9 @@ import {
   Review
 } from './Product.styles';
 
-import { Rating } from 'semantic-ui-react';
+import { Rating, Dimmer, Loader, Segment } from 'semantic-ui-react';
 
-const Product = ({ language }) => {
+const Product = ({ language, darkTheme }) => {
   const [lastViewableReview, setLastViewableReview] = useState(0);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -42,9 +43,8 @@ const Product = ({ language }) => {
     getProduct(slug).then(res => {
       const product = res.data.result;
       setProduct(product);
-      getCategoryTree(product.productCategory.id)
+      getCategoryTree(product?.productCategory.id)
         .then(res => {
-          console.log(res);
           setCategoryTree(res);
         })
         .finally(() => setLoading(false));
@@ -99,11 +99,17 @@ const Product = ({ language }) => {
   };
 
   return loading ? (
-    <h3>Loading...</h3>
+    <ProductPage>
+      <Segment>
+        <Dimmer active inverted={!darkTheme}>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      </Segment>
+    </ProductPage>
   ) : !product ? (
     <Redirect to="/404-NOT-FOUND" />
   ) : (
-    <main>
+    <ProductPage>
       <PageHero>
         <MainInfo>
           <CategoryTree>
@@ -212,9 +218,9 @@ const Product = ({ language }) => {
           </button>
         </div>
       </Reviews>
-    </main>
+    </ProductPage>
   );
 };
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language, darkTheme }) => ({ language, darkTheme });
 export default connect(mapStateToProps)(Product);

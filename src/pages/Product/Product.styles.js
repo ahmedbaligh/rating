@@ -125,10 +125,12 @@ export const BuyInfo = styled.section`
     color: ${({ theme }) => theme.white900};
     font-size: 1.5rem;
     font-weight: 600;
+    white-space: nowrap;
   }
   a {
     display: flex;
     flex-wrap: nowrap;
+    white-space: nowrap;
     align-items: center;
     justify-content: center;
     gap: 9px;
@@ -479,5 +481,15 @@ export const Review = styled.div`
     font-size: 1rem;
     font-weight: 400;
     line-height: 160%;
+  }
+`;
+
+export const ProductPage = styled.main`
+  width: 100%;
+  height: 100%;
+  background-color: ${({ theme }) =>
+    theme.dark ? theme.black900 : theme.white900};
+  .ui.segment {
+    height: 480px;
   }
 `;
