@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './utils/data';
 
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Home, Product } from './pages';
-import { Header } from './components';
+import { Home, Product, Error404 } from './pages';
+import { Footer, Header } from './components';
 
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
@@ -54,11 +54,22 @@ const App = ({
 
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
-      <Header exact path={['/', '/product/:slug']} />
+      <Route
+        exact
+        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        component={Header}
+      />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:slug" component={Product} />
+        <Route exact path="/404-NOT-FOUND" component={Error404} />
+        <Route render={props => <Redirect to="/404-NOT-FOUND" {...props} />} />
       </Switch>
+      <Route
+        exact
+        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        component={Footer}
+      />
     </ThemeProvider>
   );
 };
