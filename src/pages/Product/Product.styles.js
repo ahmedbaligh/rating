@@ -11,7 +11,6 @@ export const MainInfo = styled.section`
 `;
 export const ImgGallary = styled.section`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 36px;
   height: 100%;
@@ -24,7 +23,7 @@ export const ImgGallary = styled.section`
   flex: 1;
   .img-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     height: 360px;
     width: 100%;
@@ -59,13 +58,19 @@ export const ImgGallary = styled.section`
 export const CategoryTree = styled.section`
   display: flex;
   gap: 9px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${({ theme }) => (theme.dark ? theme.gray100 : theme.white900)};
+  transition: color 0.5s;
   a {
-    font-size: 1rem;
-    font-weight: 400;
     text-decoration: underline;
     color: ${({ theme }) => (theme.dark ? theme.gray100 : theme.white900)};
     transition: color 0.5s;
-    &:last-child {
+  }
+  span {
+    display: flex;
+    gap: 9px;
+    &:last-child a {
       color: ${({ theme }) => (theme.dark ? theme.white900 : theme.black900)};
     }
   }
@@ -121,7 +126,7 @@ export const BuyInfo = styled.section`
     font-size: 1.5rem;
     font-weight: 600;
   }
-  button {
+  a {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -130,8 +135,6 @@ export const BuyInfo = styled.section`
     background-color: ${({ theme }) => theme.white900};
     color: ${({ theme }) => theme.black900};
     font-weight: 700;
-    outline: none;
-    border: 0;
     height: fit-content;
     width: fit-content;
     padding: 15px 30px;
@@ -412,6 +415,13 @@ export const Reviews = styled.section`
     font-style: 2rem;
     font-weight: 700;
     color: ${({ theme }) => (theme.dark ? theme.white900 : theme.gray800)};
+  }
+  .reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: inherit;
+    width: 1080px;
+    max-width: 100%;
   }
   .controller {
     display: flex;
