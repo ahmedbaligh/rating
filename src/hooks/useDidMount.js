@@ -8,7 +8,7 @@ const useDidMount = (effect, dependencies) => {
       effect();
       hasMounted.current = true;
     }
-  }, [dependencies, effect, hasMounted]);
+  }, dependencies);
 };
 
 export default useDidMount;

@@ -6,7 +6,7 @@ const useUpdate = (effect, dependencies) => {
   useEffect(() => {
     if (!hasMounted.current) hasMounted.current = true;
     else effect();
-  }, [dependencies, effect, hasMounted]);
+  }, dependencies);
 };
 
 export default useUpdate;
