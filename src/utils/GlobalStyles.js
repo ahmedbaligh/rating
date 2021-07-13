@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
 
   input:focus {
     transition: ${theme.transitionDuration};
-    border-color: ${theme.blue700} !important;
+    border-color: ${theme.blue700};
   }
 
   button {
