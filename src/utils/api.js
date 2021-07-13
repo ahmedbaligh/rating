@@ -43,7 +43,6 @@ export const login = ({ username, password }) => {
 
 export const getUser = async () => {
   const res = await apiRequest({
-    method: 'GET',
     url: '/api/services/app/Session/GetCurrentLoginInformations'
   });
 
@@ -56,7 +55,6 @@ export const getUser = async () => {
   }
 
   return apiRequest({
-    method: 'GET',
     url: `/api/services/app/User/Get/?id=${id}`
   });
 };
@@ -68,3 +66,28 @@ export const updateUser = newUser =>
     data: { ...newUser }
   });
 //user end
+
+//product
+
+export const getProduct = id =>
+  apiRequest({
+    url: `/api/services/app/Product/GetFull/?id=${id}`
+  });
+export const getCategoryTree = async id => {
+  let categoryTree = [];
+  let res;
+  while (id) {
+    res = await apiRequest({
+      url: `/api/services/app/ProductCategory/Get/?id=${id}`
+    });
+    try {
+      categoryTree.push({ id: res.data.result.id, name: res.data.result.name });
+      id = res.data.result.parentCategId;
+    } catch (ex) {
+      break;
+    }
+  }
+  return new Promise(res => {
+    res(categoryTree.reverse());
+  });
+};

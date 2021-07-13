@@ -228,6 +228,10 @@
       "report": {
         "en": "Report",
         "ar": "ابلاغ عن مشكلة"
+      },
+      "currency": {
+        "en": "L.E",
+        "ar": "ج.م"
       }
     },
     "details": {
