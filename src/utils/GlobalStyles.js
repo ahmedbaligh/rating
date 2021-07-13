@@ -7,7 +7,10 @@ const GlobalStyles = createGlobalStyle`
     -webkit-tap-highlight-color: transparent;
     font-family: inherit;
   }
-
+  html, body, #root{
+    width: 100%;
+    min-height: 100%;
+  }
   body, h1, h2, h3, h4, div, p, section, header, main, hr {
     margin: 0;
     padding: 0;
