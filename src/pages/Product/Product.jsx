@@ -97,7 +97,7 @@ const Product = ({ language }) => {
 
   return loading ? (
     <ProductPage>
-      <Loading />
+      <Loading withContainer />
     </ProductPage>
   ) : !product ? (
     <Redirect to="/404-NOT-FOUND" />
