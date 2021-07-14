@@ -5,7 +5,7 @@ import { strings, validation } from '../../utils/helpers';
 import { useUpdate } from '../../hooks';
 
 const Input = ({
-  label,
+  label = '',
   type,
   placeholder,
   required,
@@ -32,7 +32,7 @@ const Input = ({
   }, [input, checkAgainst]);
 
   useEffect(() => {
-    onValidate({
+    onValidate?.({
       [name]: {
         valid: isValid ?? false,
         value: input
