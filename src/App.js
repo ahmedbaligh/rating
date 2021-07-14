@@ -56,7 +56,7 @@ const App = ({
     <ThemeProvider theme={{ ...theme, dark }}>
       <Route
         exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
         component={Header}
       />
       <Switch>
@@ -68,7 +68,7 @@ const App = ({
       </Switch>
       <Route
         exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
         component={Footer}
       />
     </ThemeProvider>

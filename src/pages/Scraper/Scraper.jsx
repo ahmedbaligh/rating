@@ -20,9 +20,10 @@ const Scraper = ({ language }) => {
   const [scrapingObj, setScrapingObj] = useState({
     marketId: 0,
     categoryId: 0,
-    NumberOfPages: 0,
+    numPages: 0,
     keyword: ''
   });
+  const [numScraped, setNumScraped] = useState(0);
 
   useDidMount(() => {
     getAllMarkets()
@@ -36,7 +37,6 @@ const Scraper = ({ language }) => {
       .then(() => {
         getAllCategories()
           .then(res => {
-            console.log(res.data.result.items);
             setCategories(res.data.result.items);
             setScrapingObj(prev => ({
               ...prev,
@@ -55,14 +55,11 @@ const Scraper = ({ language }) => {
 
   const scrape = e => {
     e.preventDefault();
-    scrapeProducts({
-      marketId: 2,
-      categoryId: 1003,
-      numPages: 1,
-      keyword: 'xiaomi'
-    })
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data));
+    setLoading(true);
+    scrapeProducts(scrapingObj)
+      .then(res => setNumScraped(res.data.result.length))
+      .catch(() => setNumScraped(-1))
+      .finally(() => setLoading(false));
   };
   const onChange = (e, value, name) => {
     e.preventDefault();
@@ -72,14 +69,17 @@ const Scraper = ({ language }) => {
     }));
   };
 
-  return loading ? (
+  return (
     <ScraperPage>
-      <Loading />
-    </ScraperPage>
-  ) : (
-    <ScraperPage>
+      {loading ? <Loading /> : ''}
+      <h1>{staticText.scraper.name[language]}</h1>
       <form onSubmit={scrape} onChange={onChange}>
-        <InputField placeholder="Ex. nokia" required label="keyword" />
+        <InputField
+          placeholder={`${staticText.scraper.ex.name[language]} ${staticText.scraper.ex.category[language]}`}
+          required
+          label={staticText.scraper.keyword[language]}
+          nameProp="keyword"
+        />
         <div className="labeled-dropdown">
           <label htmlFor="category">
             {staticText.scraper.category[language]}
@@ -87,7 +87,7 @@ const Scraper = ({ language }) => {
           <Dropdown
             id="category"
             value={scrapingObj['categoryId']}
-            options={categories.map(cat => ({
+            options={categories?.map(cat => ({
               key: `catlist${cat.id}`,
               text: cat.name,
               value: cat.id
@@ -96,7 +96,12 @@ const Scraper = ({ language }) => {
           />
         </div>
 
-        <InputField placeholder="Ex. 1" required label="Number of pages" />
+        <InputField
+          placeholder={`${staticText.scraper.ex.name[language]} 1`}
+          required
+          label={staticText.scraper.numPages[language]}
+          nameProp="numPages"
+        />
 
         <div className="labeled-dropdown">
           <label htmlFor="marketplace">
@@ -105,7 +110,7 @@ const Scraper = ({ language }) => {
           <Dropdown
             id="marketplace"
             value={scrapingObj['marketId']}
-            options={markets.map(market => ({
+            options={markets?.map(market => ({
               key: `martlist${market.id}`,
               text: language === 'ar' ? market.localName : market.name,
               value: market.id
@@ -116,6 +121,17 @@ const Scraper = ({ language }) => {
 
         <button type="submit">+ {staticText.scraper.scrape[language]}</button>
       </form>
+      {numScraped ? (
+        <p>
+          {`${
+            numScraped === -1
+              ? staticText.scraper.scraped.error[language]
+              : `${numScraped} ${staticText.scraper.scraped[language]}`
+          }`}
+        </p>
+      ) : (
+        ''
+      )}
     </ScraperPage>
   );
 };
