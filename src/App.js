@@ -2,10 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
-import { Home } from './pages';
-import { Header } from './components';
+import { Signup } from './pages';
+import { Header, Footer } from './components';
 import { theme } from './utils/data';
-import Product from './pages/Product/Product';
 
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
@@ -58,7 +57,8 @@ const App = ({
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
       <Header />
-      <Home />
+      <Signup />
+      <Footer />
     </ThemeProvider>
   );
 };
@@ -68,6 +68,7 @@ const mapStateToProps = ({ darkTheme, language, authedUser }) => ({
   language,
   authedUser
 });
+
 const mapDispatchToProps = dispatch => ({
   changeLanguage: lang => dispatch(changeLanguage(lang)),
   toggleDarkTheme: () => dispatch(toggleDarkTheme()),

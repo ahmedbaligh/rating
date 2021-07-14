@@ -113,6 +113,35 @@
       "ar": "© ٢٠٢١ | جميع الحقوق محفوظة | شركة Rating"
     }
   },
+  "topStores": {
+    "title": {
+      "en": "Explore products from top stores",
+      "ar": "استكشف المنتجات من أفضل المتاجر"
+    }
+  },
+  "slider": [
+    {
+      "name": "avoidScam",
+      "legend": {
+        "en": "Avoid scam and over-priced products.",
+        "ar": "تجنب الاحتيال والأسعار المُبالغ بها."
+      }
+    },
+    {
+      "name": "topRated",
+      "legend": {
+        "en": "Don’t Settle For Less. Always Get Top Rated Products.",
+        "ar": "لا ترضى بالتسويات، احصل دائمًا على أفضل المنتجات."
+      }
+    },
+    {
+      "name": "beInControl",
+      "legend": {
+        "en": "Be In-Control And Shop Safely.",
+        "ar": "كُن المتحكم وتسوق بأمان."
+      }
+    }
+  ],
   "home": {
     "hero": {
       "brandText": [
@@ -267,6 +296,104 @@
     "buy": {
       "en": "Buy from",
       "ar": "اشتري من"
+    }
+  },
+  "signup": {
+    "heading": {
+      "en": "Sign up to Rating Hub",
+      "ar": "أنشئ حسابك في Rating Hub"
+    },
+    "divider": {
+      "en": "Or",
+      "ar": "أو"
+    },
+    "fields": {
+      "name": {
+        "label": {
+          "en": "Name",
+          "ar": "الاسم"
+        },
+        "placeholder": {
+          "en": "Your full name",
+          "ar": "اسمك كاملًا"
+        },
+        "error": {
+          "en": "You must provide a name.",
+          "ar": "يجب أن تدخل اسمًا."
+        }
+      },
+      "username": {
+        "label": {
+          "en": "Username",
+          "ar": "اسم المستخدم"
+        },
+        "placeholder": {
+          "en": "Your unique handler",
+          "ar": "اسم مستخدم فريد"
+        },
+        "error": {
+          "en": "Username cannot begin with a number.",
+          "ar": "اسم المستخدم لا يجب أن يبدأ برقم."
+        }
+      },
+      "email": {
+        "label": {
+          "en": "Email",
+          "ar": "البريد الإلكتروني"
+        },
+        "placeholder": {
+          "en": "you@company.com",
+          "ar": "بريدك الإلكتروني"
+        },
+        "error": {
+          "en": "Provide a vaild email address.",
+          "ar": "أدخل بريدًا إلكترونيًا صحيحًا."
+        }
+      },
+      "password": {
+        "label": {
+          "en": "Password",
+          "ar": "كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Password must have at least 8 characters, 1 number, and 1 capital letter.",
+          "ar": "كلمة المرور يجب أن تتكون على الأقل من ٨ حروف ورقم وحرفٍ كبير."
+        }
+      },
+      "confirmPassword": {
+        "label": {
+          "en": "Confirm Password",
+          "ar": "تأكيد كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Passwords must match.",
+          "ar": "يجب أن تتوافق كلمتى المرور."
+        }
+      }
+    },
+    "actions": {
+      "button": {
+        "en": "Create Account",
+        "ar": "أنشئ حسابك"
+      },
+      "signSwitch": {
+        "text": {
+          "en": "Already have an account?",
+          "ar": "بالفعل لديك حساب؟"
+        },
+        "action": {
+          "en": "Sign in",
+          "ar": "سجل الدخول"
+        }
+      }
     }
   }
 }
