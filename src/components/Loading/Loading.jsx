@@ -16,7 +16,7 @@ const Loading = ({ darkTheme, segment }) => {
   return segment ? (
     <Segment />
   ) : (
-    <div style={{ height: '100vh' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       <Segment />
     </div>
   );

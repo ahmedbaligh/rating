@@ -272,5 +272,36 @@
       "en": "Buy from",
       "ar": "اشتري من"
     }
+  },
+
+  "scraper": {
+    "name": {
+      "en": "Scraper",
+      "ar": "الاسقرابر"
+    },
+    "scrape": {
+      "en": "Scrape new products",
+      "ar": "اضافة منتجات"
+    },
+    "keyword": {
+      "en": "Keyword",
+      "ar": "الكلمة المفتاحية"
+    },
+    "category": {
+      "en": "Category",
+      "ar": "الفئة"
+    },
+    "numPages": {
+      "en": "Number of pages",
+      "ar": "عدد الصفحات"
+    },
+    "market": {
+      "en": "Marketplace",
+      "ar": "اسم المتجر"
+    },
+    "scraped": {
+      "en": "products were successfully scraped",
+      "ar": "منتج تم جمعهم بنجاح"
+    }
   }
 }

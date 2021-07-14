@@ -32,7 +32,7 @@ const Input = ({
   }, [input, checkAgainst]);
 
   useEffect(() => {
-    onValidate({
+    onValidate?.({
       [name]: {
         valid: isValid ?? false,
         value: input
