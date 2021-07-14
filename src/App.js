@@ -79,6 +79,7 @@ const mapStateToProps = ({ darkTheme, language, authedUser }) => ({
   language,
   authedUser
 });
+
 const mapDispatchToProps = dispatch => ({
   changeLanguage: lang => dispatch(changeLanguage(lang)),
   toggleDarkTheme: () => dispatch(toggleDarkTheme()),
