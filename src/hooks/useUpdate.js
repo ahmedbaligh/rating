@@ -6,6 +6,7 @@ const useUpdate = (effect, dependencies) => {
   useEffect(() => {
     if (!hasMounted.current) hasMounted.current = true;
     else effect();
+    // eslint-disable-next-line
   }, dependencies);
 };
 

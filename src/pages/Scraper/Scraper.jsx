@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
   scrapeProducts,
@@ -6,7 +6,6 @@ import {
   getAllMarkets
 } from '../../utils/api';
 
-import { useDidMount } from '../../hooks';
 import { Loading, InputField, Dropdown } from '../../components';
 
 import { staticText } from '../../utils/data';
@@ -25,7 +24,7 @@ const Scraper = ({ language }) => {
   });
   const [numScraped, setNumScraped] = useState(0);
 
-  useDidMount(() => {
+  useEffect(() => {
     getAllMarkets()
       .then(res => {
         setMarkets(res.data.result.items);
@@ -45,13 +44,7 @@ const Scraper = ({ language }) => {
           })
           .finally(() => setLoading(false));
       });
-  }, [
-    getAllCategories,
-    getAllMarkets,
-    setMarkets,
-    setCategories,
-    setScrapingObj
-  ]);
+  }, []);
 
   const scrape = e => {
     e.preventDefault();

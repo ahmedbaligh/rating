@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useParams, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { staticText } from '../../utils/data';
-import { useDidMount } from '../../hooks';
 import { getProduct, getCategoryTree } from '../../utils/api';
 import { jsonParse } from '../../utils/helpers/helpers';
 
@@ -37,7 +36,7 @@ const Product = ({ language }) => {
 
   const { slug } = useParams();
 
-  useDidMount(() => {
+  useEffect(() => {
     getProduct(slug).then(res => {
       const product = res.data.result;
       setProduct(product);
@@ -47,7 +46,7 @@ const Product = ({ language }) => {
         })
         .finally(() => setLoading(false));
     });
-  });
+  }, [slug]);
 
   const sellers = [
     {

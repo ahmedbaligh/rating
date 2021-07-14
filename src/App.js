@@ -13,8 +13,6 @@ import { toggleDarkTheme } from './redux/actions/darkTheme';
 import { getAuthedUser } from './redux/actions/authedUser';
 import { apiRequest } from './utils/api';
 
-import { useDidMount } from './hooks';
-
 const App = ({
   darkTheme: dark,
   language,
@@ -23,7 +21,7 @@ const App = ({
   toggleDarkTheme,
   getAuthedUser
 }) => {
-  useDidMount(() => {
+  useEffect(() => {
     if (localStorage.getItem('token')) {
       apiRequest.defaults.headers.common['Authorization'] =
         'Bearer ' + localStorage.getItem('token');
@@ -38,14 +36,8 @@ const App = ({
         if (localDark !== dark) toggleDarkTheme();
       }
     }
-  }, [
-    dark,
-    language,
-    changeLanguage,
-    authedUser,
-    toggleDarkTheme,
-    getAuthedUser
-  ]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
