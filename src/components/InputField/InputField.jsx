@@ -11,7 +11,8 @@ const Input = ({
   required,
   error,
   onValidate,
-  checkAgainst
+  checkAgainst,
+  nameProp
 }) => {
   const [input, setInput] = useState('');
   const [isValid, setIsValid] = useState();
@@ -50,7 +51,7 @@ const Input = ({
       <label htmlFor={inputID}>{label}</label>
       <input
         id={inputID}
-        name={inputID}
+        name={nameProp || inputID}
         type={type ?? 'text'}
         placeholder={placeholder}
         value={input}

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import StyledLoading from './Loading.styles';
 
-const Loading = ({ darkTheme, segment }) => {
+const Loading = ({ darkTheme, withContainer }) => {
   const Segment = () => (
     <StyledLoading>
       <Dimmer active inverted={!darkTheme}>
@@ -13,10 +13,10 @@ const Loading = ({ darkTheme, segment }) => {
     </StyledLoading>
   );
 
-  return segment ? (
+  return !withContainer ? (
     <Segment />
   ) : (
-    <div style={{ height: '100vh' }}>
+    <div style={{ height: '100vh', width: '100%' }}>
       <Segment />
     </div>
   );

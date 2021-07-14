@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Segment } from 'semantic-ui-react';
 
-const StyledLoading = styled(Segment)`
-  width: 100%;
-  height: 100%;
+const StyledLoading = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 8;
-  border: 0 !important;
-  border-radius: inherit !important;
 `;
 export default StyledLoading;

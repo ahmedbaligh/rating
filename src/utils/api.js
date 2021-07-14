@@ -93,9 +93,27 @@ export const getCategoryTree = async id => {
   });
 };
 
-//
+//product end
 
-//Scraper
+//categories
+
+export const getAllCategories = () =>
+  apiRequest({
+    url: '/api/services/app/ProductCategory/GetAll'
+  });
+
+//categories end
+
+//marketplace
+
+export const getAllMarkets = () =>
+  apiRequest({
+    url: '/api/services/app/MarketPlace/GetAll'
+  });
+
+//marketplace end
+
+//scraper
 
 export const scrapeProducts = ({ marketId, categoryId, numPages, keyword }) => {
   marketId = marketId.toString();
@@ -114,3 +132,5 @@ export const scrapeProducts = ({ marketId, categoryId, numPages, keyword }) => {
     }
   });
 };
+
+//scraper end

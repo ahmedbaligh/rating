@@ -399,5 +399,49 @@
         }
       }
     }
+  },
+  "scraper": {
+    "name": {
+      "en": "Scraper",
+      "ar": "الاسقرابر"
+    },
+    "scrape": {
+      "en": "Scrape new products",
+      "ar": "اضافة منتجات"
+    },
+    "keyword": {
+      "en": "Keyword",
+      "ar": "الكلمة المفتاحية"
+    },
+    "category": {
+      "en": "Category",
+      "ar": "الفئة"
+    },
+    "numPages": {
+      "en": "Number of pages",
+      "ar": "عدد الصفحات"
+    },
+    "market": {
+      "en": "Marketplace",
+      "ar": "اسم المتجر"
+    },
+    "scraped": {
+      "en": "products were successfully scraped",
+      "ar": "منتج تم جمعهم بنجاح",
+      "error": {
+        "en": "Some error happend, please try again",
+        "ar": "حدث خطأ برجاء المحاولة مرة اخرى"
+      }
+    },
+    "ex": {
+      "name": {
+        "en": "Ex.",
+        "ar": "مثال"
+      },
+      "category": {
+        "en": "nokia",
+        "ar": "نوكيا"
+      }
+    }
   }
 }
