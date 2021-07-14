@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { Link, useParams, Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
 import { staticText } from '../../utils/data';
 
+import { useDidMount } from '../../hooks';
+
+import { getProduct, getCategoryTree } from '../../utils/api';
+import { jsonParse } from '../../utils/helpers/helpers';
+
 import {
+  ProductPage,
   PageHero,
   MainInfo,
   ImgGallary,
@@ -22,82 +28,28 @@ import {
   Review
 } from './Product.styles';
 
-import { Rating } from 'semantic-ui-react';
+import { Rating, Dimmer, Loader, Segment } from 'semantic-ui-react';
 
-const Product = ({ language }) => {
-  const [imageIndex, setImageIndex] = useState(0);
+const Product = ({ language, darkTheme }) => {
   const [lastViewableReview, setLastViewableReview] = useState(0);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const details = useRef(null);
+  const [categoryTree, setCategoryTree] = useState([]);
 
-  const imgs = [
-    'https://images-na.ssl-images-amazon.com/images/I/81LmL94PUvS._AC_SL1500_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/51okYOUezlS._AC_SL1500_.jpg',
-    'https://images-na.ssl-images-amazon.com/images/I/51VP5aiYl-L._AC_SL1000_.jpg'
-  ];
+  const { slug } = useParams();
 
-  const specifications = {
-    'Package Dimensions': '9.09 x 8.54 x 1.69 inches',
-    'Item Weight': '1.08 pounds',
-    RAM: '64 GB',
-    OS: 'IOS',
-    Manufacturer: 'Apple Computer',
-    'Form Factor': 'Smart Phone',
-    'Included Components': 'Charging cable and block'
-  };
-
-  const localSpecifications = {
-    'ابعاد الطرد': '9.09 x 8.54 x 1.69 inches',
-    'وزن الطرد': '1.08 pounds',
-    رام: '64 GB',
-    'نظام التشغيل': 'IOS',
-    'الشركة المصنعة': 'Apple Computer',
-    'عامل الشكل': 'Smart Phone',
-    'محتويات الطرد': 'Charging cable and block'
-  };
-
-  const reviews = [
-    {
-      id: 'rev0',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 4,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    },
-    {
-      id: 'rev1',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 5,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    },
-    {
-      id: 'rev2',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 4,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    },
-    {
-      id: 'rev3',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 4,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    },
-    {
-      id: 'rev4',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 4,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    },
-    {
-      id: 'rev5',
-      reviewer: 'Leshem Amaya Mejia',
-      rating: 4,
-      comment:
-        'I understand theres bad reviews but the phone I received came in solid fresh like brand new. im definitely loving it and 512gb for 1,000$ (plus taxes), thats a good deal, they go for 1,600 after taxes in the apple website. Im really satisfied and i would strongly recommend it'
-    }
-  ];
+  useDidMount(() => {
+    getProduct(slug).then(res => {
+      const product = res.data.result;
+      setProduct(product);
+      getCategoryTree(product?.productCategory.id)
+        .then(res => {
+          setCategoryTree(res);
+        })
+        .finally(() => setLoading(false));
+    });
+  });
 
   const sellers = [
     {
@@ -128,32 +80,65 @@ const Product = ({ language }) => {
 
   const [viewableSellers, setViewableSellers] = useState(sellers.slice(0, 3));
 
-  const specs = language === 'ar' ? localSpecifications : specifications;
-  return (
-    <main>
+  let specs = product
+    ? jsonParse(
+        product[language === 'en' ? 'specifications' : 'localSpecifications']
+      )
+    : '';
+
+  let reviews = product ? jsonParse(product['reviews']) : '';
+
+  const scrollToDetails = () => {
+    const sectionY =
+      details.current.offsetTop - document.querySelector('header').clientHeight;
+    window.scrollTo({
+      top: sectionY,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  return loading ? (
+    <ProductPage>
+      <Segment>
+        <Dimmer active inverted={!darkTheme}>
+          <Loader>Loading</Loader>
+        </Dimmer>
+      </Segment>
+    </ProductPage>
+  ) : !product ? (
+    <Redirect to="/404-NOT-FOUND" />
+  ) : (
+    <ProductPage>
       <PageHero>
         <MainInfo>
           <CategoryTree>
-            <Link to="#">test</Link>
-            <Link to="#">test</Link>
-            <Link to="#">test</Link>
+            {categoryTree.map((cat, i) => (
+              <span key={`categ${cat.id}`}>
+                {i !== 0 && '>'}
+                <Link to={`/category/${cat.name}`}>{cat.name}</Link>
+              </span>
+            ))}
           </CategoryTree>
           <ProductName>
-            Apple iPhone 11 Pro Max, 64GB, Space Gray - Unlocked (Renewed
-            Premium)
+            {product[language === 'en' ? 'name' : 'localName']}
           </ProductName>
-          <DetailsBtn>{staticText.product.hero.details[language]}</DetailsBtn>
+          <DetailsBtn onClick={scrollToDetails}>
+            {staticText.product.hero.details[language]}
+          </DetailsBtn>
           <RatingSection>
             <span>{staticText.product.hero.rating.name[language]}</span>
-            <Rating defaultRating={3} maxRating={5} disabled />
-            <span>15 {staticText.product.hero.rating.ratings[language]}</span>
+            <Rating defaultRating={product.rating} maxRating={5} disabled />
+            <span>{`${product.reviewsCount} ${staticText.product.hero.rating.ratings[language]}`}</span>
           </RatingSection>
           <BuyInfo>
-            <span>$650</span>
-            <button>
+            <span>{`${product.price} ${staticText.product.hero.currency[language]}`}</span>
+            <a href={product.url} target="_blank" rel="noreferrer">
               {staticText.product.buy[language]}
-              <span>Amazon</span>
-            </button>
+              <span>
+                {product.marketPlace[language === 'en' ? 'name' : 'localName']}
+              </span>
+            </a>
           </BuyInfo>
           <Feedback>
             <button>{staticText.product.hero.addRating[language]}</button>
@@ -162,26 +147,12 @@ const Product = ({ language }) => {
         </MainInfo>
         <ImgGallary>
           <div className="img-container">
-            <img src={imgs[imageIndex]} alt="product"></img>
-          </div>
-          <div className="img-picker">
-            {imgs.map((_, i) => (
-              <button key={`img${i}`} onClick={() => setImageIndex(i)}>
-                .
-              </button>
-            ))}
+            <img src={product.images} alt="product"></img>
           </div>
         </ImgGallary>
       </PageHero>
-      <Details>
+      <Details ref={details}>
         <h2>{staticText.product.details.heading[language]}</h2>
-        <p>
-          Shoot amazing videos and photos with the Ultra Wide, Wide, and
-          Telephoto cameras. Capture your best low-light photos with Night mode.
-          Watch HDR movies and shows on the Super Retina XDR display—the
-          brightest iPhone display yet. Experience unprecedented performance
-          with A13 Bionic for gaming, augmented reality (AR), and photography.
-        </p>
         <h2>{staticText.product.details.specs[language]}</h2>
         <table>
           <tbody>
@@ -215,33 +186,41 @@ const Product = ({ language }) => {
       </OtherSellers>
       <Reviews>
         <h2>{staticText.product.reviews.heading[language]}</h2>
-        {reviews.slice(lastViewableReview, 5).map(review => (
-          <Review key={review.id}>
-            <div className="review-header">
-              <span className="name">{review.reviewer}</span>
-              <Rating defaultRating={review.rating} maxRating={5} disabled />
-            </div>
-            <p>{review.comment}</p>
-          </Review>
-        ))}
+        <div className="reviews-container">
+          {reviews
+            .slice(lastViewableReview, lastViewableReview + 3)
+            .map((review, i) => (
+              <Review key={`revw${i}`}>
+                <div className="review-header">
+                  <span className="name">{review.User}</span>
+                  <Rating
+                    defaultRating={review.Rating}
+                    maxRating={5}
+                    disabled
+                  />
+                </div>
+                <p>{review.Comment}</p>
+              </Review>
+            ))}
+        </div>
         <div className="controller">
           <button
             disabled={lastViewableReview <= 0}
-            onClick={() => setLastViewableReview(lastViewableReview - 4)}
+            onClick={() => setLastViewableReview(lastViewableReview - 3)}
           >
             {staticText.product.reviews.prev[language]}
           </button>
           <button
-            disabled={lastViewableReview >= reviews.length - 5}
-            onClick={() => setLastViewableReview(lastViewableReview + 4)}
+            disabled={lastViewableReview >= reviews.length - 3}
+            onClick={() => setLastViewableReview(lastViewableReview + 3)}
           >
             {staticText.product.reviews.next[language]}
           </button>
         </div>
       </Reviews>
-    </main>
+    </ProductPage>
   );
 };
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language, darkTheme }) => ({ language, darkTheme });
 export default connect(mapStateToProps)(Product);

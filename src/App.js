@@ -1,15 +1,19 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-
-import { Signup } from './pages';
-import { Header, Footer } from './components';
 import { theme } from './utils/data';
+
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+import { Home, Product, Error404 } from './pages';
+import { Footer, Header } from './components';
 
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
 import { getAuthedUser } from './redux/actions/authedUser';
 import { apiRequest } from './utils/api';
+
+import { useDidMount } from './hooks';
 
 const App = ({
   darkTheme: dark,
@@ -19,26 +23,20 @@ const App = ({
   toggleDarkTheme,
   getAuthedUser
 }) => {
-  let mounted = useRef(false);
+  useDidMount(() => {
+    if (localStorage.getItem('token')) {
+      apiRequest.defaults.headers.common['Authorization'] =
+        'Bearer ' + localStorage.getItem('token');
+      getAuthedUser();
+    }
+    if (!authedUser) {
+      if (localStorage.getItem('language'))
+        changeLanguage(localStorage.getItem('language'));
 
-  useEffect(() => {
-    if (!mounted.current) {
-      if (localStorage.getItem('token')) {
-        apiRequest.defaults.headers.common['Authorization'] =
-          'Bearer ' + localStorage.getItem('token');
-        getAuthedUser();
+      if (localStorage.getItem('dark')) {
+        const localDark = JSON.parse(localStorage.getItem('dark'));
+        if (localDark !== dark) toggleDarkTheme();
       }
-      if (!authedUser) {
-        if (localStorage.getItem('language'))
-          changeLanguage(localStorage.getItem('language'));
-        else localStorage.setItem('language', language);
-
-        if (localStorage.getItem('dark')) {
-          const localDark = JSON.parse(localStorage.getItem('dark'));
-          if (localDark !== dark) toggleDarkTheme();
-        } else localStorage.setItem('dark', dark);
-      }
-      mounted.current = true;
     }
   }, [
     dark,
@@ -56,9 +54,22 @@ const App = ({
 
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
-      <Header />
-      <Signup />
-      <Footer />
+      <Route
+        exact
+        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        component={Header}
+      />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/product/:slug" component={Product} />
+        <Route exact path="/404-NOT-FOUND" component={Error404} />
+        <Route render={props => <Redirect to="/404-NOT-FOUND" {...props} />} />
+      </Switch>
+      <Route
+        exact
+        path={['/', '/product/:slug', '/404-NOT-FOUND']}
+        component={Footer}
+      />
     </ThemeProvider>
   );
 };

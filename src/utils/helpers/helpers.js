@@ -42,3 +42,19 @@ export const getProductsCount = (categoryName, lang) =>
 
 export const getFormattedNumber = (amount, lang = 'en') =>
   new Intl.NumberFormat(lang).format(amount);
+
+const removeWhitespace = text => text.replace(/([\n\t\r])/g, '');
+
+export const jsonParse = str => {
+  return JSON.parse(
+    removeWhitespace(str)
+      .replaceAll('"', "'")
+      .replaceAll(', }', ' }')
+      .replaceAll(', ]', ' ]')
+      .replaceAll("{ '", '{ "')
+      .replaceAll("' }", '" }')
+      .replaceAll("' ]", '" ]')
+      .replaceAll("','", '","')
+      .replaceAll("':'", '":"')
+  );
+};

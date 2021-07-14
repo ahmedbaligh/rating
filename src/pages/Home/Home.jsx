@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import HomePage from './Home.styles';
-import { Footer, SearchBar, Button } from '../../components';
+import { SearchBar, Button } from '../../components';
 import { staticText } from '../../utils/data';
 import string from '../../utils/helpers/strings';
 import { getProductsCount } from '../../utils/helpers/helpers';
@@ -118,8 +118,6 @@ const Home = ({ language }) => {
           </div>
         </section>
       </main>
-
-      <Footer />
     </HomePage>
   );
 };
