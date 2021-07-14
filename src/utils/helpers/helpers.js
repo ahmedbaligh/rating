@@ -46,15 +46,19 @@ export const getFormattedNumber = (amount, lang = 'en') =>
 const removeWhitespace = text => text.replace(/([\n\t\r])/g, '');
 
 export const jsonParse = str => {
-  return JSON.parse(
-    removeWhitespace(str)
-      .replaceAll('"', "'")
-      .replaceAll(', }', ' }')
-      .replaceAll(', ]', ' ]')
-      .replaceAll("{ '", '{ "')
-      .replaceAll("' }", '" }')
-      .replaceAll("' ]", '" ]')
-      .replaceAll("','", '","')
-      .replaceAll("':'", '":"')
-  );
+  try {
+    return JSON.parse(
+      removeWhitespace(str)
+        .replaceAll('"', "'")
+        .replaceAll(', }', ' }')
+        .replaceAll(', ]', ' ]')
+        .replaceAll("{ '", '{ "')
+        .replaceAll("' }", '" }')
+        .replaceAll("' ]", '" ]')
+        .replaceAll("','", '","')
+        .replaceAll("':'", '":"')
+    );
+  } catch {
+    return null;
+  }
 };

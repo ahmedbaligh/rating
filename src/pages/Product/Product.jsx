@@ -80,10 +80,10 @@ const Product = ({ language }) => {
   let specs = product
     ? jsonParse(
         product[language === 'en' ? 'specifications' : 'localSpecifications']
-      )
+      ) || {}
     : '';
 
-  let reviews = product ? jsonParse(product['reviews']) : '';
+  let reviews = product ? jsonParse(product['reviews']) || [] : '';
 
   const scrollToDetails = () => {
     const sectionY =
