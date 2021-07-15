@@ -59,6 +59,16 @@ export const getUser = async () => {
   });
 };
 
+export const getAllUsers = () =>
+  apiRequest({
+    url: '/api/services/app/User/GetAll/?Keyword='
+  });
+
+export const getAllRoles = () =>
+  apiRequest({
+    url: '/api/services/app/Role/GetRoles'
+  });
+
 export const updateUser = newUser =>
   apiRequest({
     method: 'PUT',

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export default styled.div`
   --invalid-color: #f44;
+  width: 100%;
 
   &::after {
     content: '';

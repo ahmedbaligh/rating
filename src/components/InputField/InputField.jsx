@@ -12,9 +12,11 @@ const Input = ({
   error,
   onValidate,
   checkAgainst,
-  nameProp
+  nameProp,
+  disabled,
+  valueProp = ''
 }) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(valueProp);
   const [isValid, setIsValid] = useState();
   const [name] = useState(strings.toCamelCase(label));
   const [bypassValidation] = useState(onValidate ? false : true);
@@ -57,6 +59,7 @@ const Input = ({
         value={input}
         onChange={e => setInput(e.target.value)}
         required={required}
+        disabled={disabled}
       />
     </InputField>
   );

@@ -11,7 +11,7 @@ import { Footer, Header } from './components';
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
 import { getAuthedUser } from './redux/actions/authedUser';
-import { apiRequest } from './utils/api';
+import { apiRequest, login } from './utils/api';
 
 const App = ({
   darkTheme: dark,
@@ -28,6 +28,7 @@ const App = ({
       getAuthedUser();
     }
     if (!authedUser) {
+      login({ username: 'admin', password: '123qwe' });
       if (localStorage.getItem('language'))
         changeLanguage(localStorage.getItem('language'));
 

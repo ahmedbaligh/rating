@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-const ScraperPage = styled.div`
+export default styled.div`
   position: relative;
   display: flex;
   gap: 54px;
   width: 100%;
   min-width: 0;
-  padding-inline: 36px;
-  padding-block: 90px;
+  padding: 90px 36px;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) =>
@@ -35,45 +34,6 @@ const ScraperPage = styled.div`
       ${({ theme }) =>
         theme.dark ? `${theme.white900}55` : `${theme.black900}55`};
 
-    .ui.inline.dropdown {
-      width: 100%;
-      height: 45px;
-      border: 1px solid
-        ${({ theme }) => (theme.dark ? theme.gray700 : theme.gray300)};
-      border-radius: 4px;
-
-      background-color: ${({ theme }) => theme.white900};
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .dropdown.icon,
-      .text {
-        color: ${({ theme }) => theme.gray800};
-      }
-      .visible.menu {
-        top: 120%;
-        width: 100%;
-      }
-    }
-
-    .labeled-dropdown {
-      label {
-        color: ${({ theme }) => (theme.dark ? theme.white700 : theme.gray800)};
-        transition: color ${({ theme }) => theme.transitionDuration};
-        display: block;
-        margin-bottom: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-
-        &::after {
-          content: '*';
-          margin-inline-start: 5px;
-          color: #f44;
-        }
-      }
-    }
-
     button {
       grid-column: 1 / 3;
       width: 90%;
@@ -99,4 +59,42 @@ const ScraperPage = styled.div`
   }
 `;
 
-export default ScraperPage;
+export const LabeledDropDown = styled.div`
+  width: 100%;
+  label {
+    color: ${({ theme }) => (theme.dark ? theme.white700 : theme.gray800)};
+    transition: color ${({ theme }) => theme.transitionDuration};
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &::after {
+      content: '*';
+      margin-inline-start: 5px;
+      color: #f44;
+    }
+  }
+
+  .ui.inline.dropdown {
+    width: 100%;
+    height: 45px;
+    border: 1px solid
+      ${({ theme }) => (theme.dark ? theme.gray700 : theme.gray300)};
+    border-radius: 4px;
+
+    background-color: ${({ theme }) => theme.white900};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .dropdown.icon,
+    .text {
+      color: ${({ theme }) => theme.gray800};
+    }
+    .visible.menu {
+      top: 120%;
+      width: 100%;
+    }
+  }
+`;

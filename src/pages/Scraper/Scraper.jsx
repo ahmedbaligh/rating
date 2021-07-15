@@ -10,7 +10,7 @@ import { Loading, InputField, Dropdown } from '../../components';
 
 import { staticText } from '../../utils/data';
 
-import ScraperPage from './Scraper.styles';
+import ScraperPage, { LabeledDropDown } from './Scraper.styles';
 
 const Scraper = ({ language }) => {
   const [categories, setCategories] = useState([]);
@@ -73,7 +73,7 @@ const Scraper = ({ language }) => {
           label={staticText.scraper.keyword[language]}
           nameProp="keyword"
         />
-        <div className="labeled-dropdown">
+        <LabeledDropDown>
           <label htmlFor="category">
             {staticText.scraper.category[language]}
           </label>
@@ -87,7 +87,7 @@ const Scraper = ({ language }) => {
             }))}
             onChange={(e, { value }) => onChange(e, value, 'categoryId')}
           />
-        </div>
+        </LabeledDropDown>
 
         <InputField
           placeholder={`${staticText.scraper.ex.name[language]} 1`}
@@ -96,7 +96,7 @@ const Scraper = ({ language }) => {
           nameProp="numPages"
         />
 
-        <div className="labeled-dropdown">
+        <LabeledDropDown>
           <label htmlFor="marketplace">
             {staticText.scraper.market[language]}
           </label>
@@ -110,7 +110,7 @@ const Scraper = ({ language }) => {
             }))}
             onChange={(e, { value }) => onChange(e, value, 'marketId')}
           />
-        </div>
+        </LabeledDropDown>
 
         <button type="submit">+ {staticText.scraper.scrape[language]}</button>
       </form>
