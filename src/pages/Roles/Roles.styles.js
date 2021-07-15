@@ -98,6 +98,8 @@ export default styled.div`
 `;
 
 export const Overlay = styled.div`
+  --invalid-color: #f44;
+
   position: absolute;
   top: 0;
   right: 0;
@@ -134,13 +136,20 @@ export const Overlay = styled.div`
       button {
         padding: 9px;
         border-radius: 5px;
-        background-color: red;
+        background-color: var(--invalid-color);
         color: ${({ theme }) => theme.white900};
         &.save {
           background-color: ${({ theme }) => theme.blue800};
           color: ${({ theme }) => theme.white900};
         }
       }
+    }
+    .error {
+      width: 100%;
+      text-align: inline-start;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--invalid-color);
     }
   }
 `;

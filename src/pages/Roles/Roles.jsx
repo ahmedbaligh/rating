@@ -34,7 +34,7 @@ const Roles = () => {
       setError('user not found');
       return;
     }
-
+    setError(null);
     newUser = { ...newUser, roleNames: role[0] === -1 ? [] : role };
     updateUser(newUser).then(() => {
       setUsers(prev => [
@@ -52,7 +52,6 @@ const Roles = () => {
   useEffect(() => {
     setTimeout(() => {
       Promise.all([getAllUsers(), getAllRoles()]).then(([users, roles]) => {
-        console.log(users.data.result.items);
         setUsers(users.data.result.items);
         setRoles(roles.data.result.items);
         setRole([roles.data.result.items[0].name.toUpperCase()]);
@@ -133,6 +132,7 @@ const Roles = () => {
                 Save changes
               </button>
             </div>
+            {error && <span className="error">*{error}</span>}
           </form>
         </Overlay>
       ) : (
