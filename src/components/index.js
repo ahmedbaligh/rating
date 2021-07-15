@@ -8,4 +8,4 @@ export { default as InputField } from './InputField/InputField';
 export { default as Loading } from './Loading/Loading';
 export { default as TopStores } from './TopStores/TopStores';
 export { default as Slider } from './Slider/Slider';
-
+export { default as SideBar } from './SideBar/SideBar';

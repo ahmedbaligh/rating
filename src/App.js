@@ -5,7 +5,7 @@ import { theme } from './utils/data';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Home, Product, Error404, Scraper } from './pages';
+import { Home, Product, Error404, Admin } from './pages';
 import { Footer, Header } from './components';
 
 import { changeLanguage } from './redux/actions/language';
@@ -55,7 +55,7 @@ const App = ({
         <Route exact path="/" component={Home} />
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/404-NOT-FOUND" component={Error404} />
-        <Route exact path="/scraper" component={Scraper} />
+        <Route exact path="/admin-panel" component={Admin} />
         <Route render={props => <Redirect to="/404-NOT-FOUND" {...props} />} />
       </Switch>
       <Route

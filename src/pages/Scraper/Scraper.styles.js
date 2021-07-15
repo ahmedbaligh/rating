@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
-const ScraperPage = styled.main`
+const ScraperPage = styled.div`
   position: relative;
   display: flex;
-  gap: 18px;
-  padding-inline: 9px;
+  gap: 54px;
+  width: 100%;
+  min-width: 0;
+  padding-inline: 36px;
   padding-block: 90px;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }) =>
-    theme.dark ? theme.black900 : theme.blue100};
+    theme.dark ? theme.black900 : theme.white900};
   transition: background 0.5s;
   h1 {
     color: ${({ theme }) => (theme.dark ? theme.white900 : theme.gray800)};
@@ -31,7 +33,8 @@ const ScraperPage = styled.main`
     align-items: end;
     box-shadow: 0px 4px 10px
       ${({ theme }) =>
-        theme.dark ? `${theme.white900}66` : `${theme.black900}66`};
+        theme.dark ? `${theme.white900}55` : `${theme.black900}55`};
+
     .ui.inline.dropdown {
       width: 100%;
       height: 45px;
@@ -92,7 +95,7 @@ const ScraperPage = styled.main`
     color: ${({ theme }) => theme.gray800};
     box-shadow: 0px 4px 10px
       ${({ theme }) =>
-        theme.dark ? `${theme.white900}66` : `${theme.black900}66`};
+        theme.dark ? `${theme.white900}55` : `${theme.black900}55`};
   }
 `;
 
