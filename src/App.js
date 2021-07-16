@@ -6,12 +6,12 @@ import { theme } from './utils/data';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Home, Product, Error404, Admin } from './pages';
-import { Footer, Header } from './components';
+import { Loading, Footer, Header } from './components';
 
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
 import { getAuthedUser } from './redux/actions/authedUser';
-import { apiRequest, login } from './utils/api';
+import { axiosDefault } from './utils/api';
 
 const App = ({
   darkTheme: dark,
@@ -19,17 +19,20 @@ const App = ({
   authedUser,
   changeLanguage,
   toggleDarkTheme,
-  getAuthedUser
+  getAuthedUser,
+  loading
 }) => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      apiRequest.defaults.headers.common['Authorization'] =
-        'Bearer ' + localStorage.getItem('token');
+      axiosDefault.defaults.headers.common['Authorization'] =
+        localStorage.getItem('token');
       getAuthedUser();
     }
     if (!authedUser) {
-      login({ username: 'admin', password: '123qwe' });
-      if (localStorage.getItem('language'))
+      if (
+        localStorage.getItem('language') &&
+        localStorage.getItem('language') !== language
+      )
         changeLanguage(localStorage.getItem('language'));
 
       if (localStorage.getItem('dark')) {
@@ -47,6 +50,7 @@ const App = ({
 
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
+      {loading ? <Loading /> : ''}
       <Route
         exact
         path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
@@ -68,10 +72,11 @@ const App = ({
   );
 };
 
-const mapStateToProps = ({ darkTheme, language, authedUser }) => ({
+const mapStateToProps = ({ darkTheme, language, authedUser, loading }) => ({
   darkTheme,
   language,
-  authedUser
+  authedUser,
+  loading
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,11 +2,17 @@ import axios from 'axios';
 
 import { getAuthedUser } from '../redux/actions/authedUser';
 import store from '../redux/store';
+import { toggleLoading } from '../redux/actions/loading';
 
-export const apiRequest = axios.create({
+export const axiosDefault = axios.create({
   baseURL: 'http://amr11mahmoud-001-site1.etempurl.com',
   headers: { 'Content-Type': 'application/json' }
 });
+
+export const apiRequest = (obj = {}) => {
+  store.dispatch(toggleLoading(true));
+  return axiosDefault(obj).finally(() => store.dispatch(toggleLoading(0)));
+};
 
 //user
 export const register = ({ name, username, email, password }) =>
@@ -24,7 +30,7 @@ export const register = ({ name, username, email, password }) =>
   });
 
 export const login = ({ username, password }) => {
-  return apiRequest({
+  return axiosDefault({
     method: 'POST',
     url: '/api/TokenAuth/Authenticate',
     data: {
@@ -34,7 +40,7 @@ export const login = ({ username, password }) => {
     }
   }).then(res => {
     const TOKEN = 'Bearer ' + res.data.result.accessToken;
-    apiRequest.defaults.headers.common['Authorization'] = TOKEN;
+    axiosDefault.defaults.headers.common['Authorization'] = TOKEN;
     localStorage.setItem('token', TOKEN);
 
     store.dispatch(getAuthedUser());
@@ -42,7 +48,7 @@ export const login = ({ username, password }) => {
 };
 
 export const getUser = async () => {
-  const res = await apiRequest({
+  const res = await axiosDefault({
     url: '/api/services/app/Session/GetCurrentLoginInformations'
   });
 
@@ -54,7 +60,7 @@ export const getUser = async () => {
     });
   }
 
-  return apiRequest({
+  return axiosDefault({
     url: `/api/services/app/User/Get/?id=${id}`
   });
 };
@@ -70,7 +76,7 @@ export const getAllRoles = () =>
   });
 
 export const updateUser = newUser =>
-  apiRequest({
+  axiosDefault({
     method: 'PUT',
     url: '/api/services/app/User/Update',
     data: { ...newUser }
@@ -79,16 +85,18 @@ export const updateUser = newUser =>
 
 //product
 
-export const getProduct = id =>
-  apiRequest({
+export const getProduct = id => {
+  return apiRequest({
     url: `/api/services/app/Product/GetFull/?id=${id}`
   });
+};
 
 export const getCategoryTree = async id => {
   let categoryTree = [];
   let res;
+  store.dispatch(toggleLoading(true));
   while (id) {
-    res = await apiRequest({
+    res = await axiosDefault({
       url: `/api/services/app/ProductCategory/Get/?id=${id}`
     });
     try {
@@ -98,6 +106,7 @@ export const getCategoryTree = async id => {
       break;
     }
   }
+  store.dispatch(toggleLoading(0));
   return new Promise(res => {
     res(categoryTree.reverse());
   });

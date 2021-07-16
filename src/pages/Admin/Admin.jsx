@@ -31,5 +31,4 @@ const Admin = () => {
     </AdminPanel>
   );
 };
-
 export default Admin;

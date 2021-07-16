@@ -6,7 +6,7 @@ import {
   getAllMarkets
 } from '../../utils/api';
 
-import { Loading, InputField, Dropdown } from '../../components';
+import { InputField, Dropdown } from '../../components';
 
 import { staticText } from '../../utils/data';
 
@@ -15,7 +15,6 @@ import ScraperPage, { LabeledDropDown } from './Scraper.styles';
 const Scraper = ({ language }) => {
   const [categories, setCategories] = useState([]);
   const [markets, setMarkets] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [scrapingObj, setScrapingObj] = useState({
     marketId: 0,
     categoryId: 0,
@@ -25,34 +24,28 @@ const Scraper = ({ language }) => {
   const [numScraped, setNumScraped] = useState(0);
 
   useEffect(() => {
-    getAllMarkets()
-      .then(res => {
-        setMarkets(res.data.result.items);
+    Promise.all([getAllMarkets(), getAllCategories()]).then(
+      ([markets, cats]) => {
+        setMarkets(markets.data.result.items);
         setScrapingObj(prev => ({
           ...prev,
-          marketId: res.data.result.items[0].id
+          marketId: markets.data.result.items[0].id
         }));
-      })
-      .then(() => {
-        getAllCategories()
-          .then(res => {
-            setCategories(res.data.result.items);
-            setScrapingObj(prev => ({
-              ...prev,
-              categoryId: res.data.result.items[0].id
-            }));
-          })
-          .finally(() => setLoading(false));
-      });
+
+        setCategories(cats.data.result.items);
+        setScrapingObj(prev => ({
+          ...prev,
+          categoryId: cats.data.result.items[0].id
+        }));
+      }
+    );
   }, []);
 
   const scrape = e => {
     e.preventDefault();
-    setLoading(true);
     scrapeProducts(scrapingObj)
       .then(res => setNumScraped(res.data.result.length))
-      .catch(() => setNumScraped(-1))
-      .finally(() => setLoading(false));
+      .catch(() => setNumScraped(-1));
   };
   const onChange = (e, value, name) => {
     e.preventDefault();
@@ -64,7 +57,6 @@ const Scraper = ({ language }) => {
 
   return (
     <ScraperPage>
-      {loading ? <Loading /> : ''}
       <h1>{staticText.scraper.name[language]}</h1>
       <form onSubmit={scrape} onChange={onChange}>
         <InputField
