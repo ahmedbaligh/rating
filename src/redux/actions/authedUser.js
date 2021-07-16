@@ -1,4 +1,4 @@
-import { getUser } from '../../utils/api';
+import { getUser, axiosDefault } from '../../utils/api';
 import { toggleLoading } from './loading';
 
 export const SET_AUTHED_USER = 'SET_AUTHED_USER';
@@ -19,6 +19,7 @@ export const getAuthedUser = () => dispatch => {
 };
 
 export const logout = () => {
+  axiosDefault.defaults.headers.common['Authorization'] = '';
   localStorage.removeItem('token');
   return { type: LOG_OUT };
 };
