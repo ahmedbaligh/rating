@@ -10,6 +10,11 @@ import { Scraper, Roles } from '../';
 const Admin = () => {
   const tab = new URLSearchParams(useLocation().search).get('tab');
 
+  const tabsComponent = {
+    scraper: <Scraper />,
+    roles: <Roles />
+  };
+
   const tabs = [
     { name: 'scraper', icon: AdminAssets.scraper },
     { name: 'roles', icon: AdminAssets.roles }
@@ -18,16 +23,7 @@ const Admin = () => {
   return (
     <AdminPanel>
       <SideBar tabs={tabs} />
-      {(() => {
-        switch (tab) {
-          case 'scraper':
-            return <Scraper />;
-          case 'roles':
-            return <Roles />;
-          default:
-            return '';
-        }
-      })()}
+      {tabsComponent[tab]}
     </AdminPanel>
   );
 };
