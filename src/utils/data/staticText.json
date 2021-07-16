@@ -461,5 +461,51 @@
       "en": "Logout",
       "ar": "تسجيل الخروج"
     }
+  },
+  "roles": {
+    "name": {
+      "en": "Roles",
+      "ar": "الادوار"
+    },
+    "add": {
+      "en": "+ Add Role",
+      "ar": "+ اضافة دور"
+    },
+    "username": {
+      "en": "Username",
+      "ar": "اسم المستخدم"
+    },
+    "email": {
+      "en": "Email",
+      "ar": "البريد الالكترونى"
+    },
+    "role": {
+      "en": "Role",
+      "ar": "الدور"
+    },
+    "user": {
+      "en": "User",
+      "ar": "المستخدم"
+    },
+    "or": {
+      "en": "or",
+      "ar": "او"
+    },
+    "save": {
+      "en": "Save changes",
+      "ar": "حفظ"
+    },
+    "cancel": {
+      "en": "Cancel",
+      "ar": "الغاء"
+    },
+    "admin": {
+      "en": "Admin",
+      "ar": "مدير"
+    },
+    "error": {
+      "en": "User was not found",
+      "ar": "لا يوجد مستخدم بهذه البيانات"
+    }
   }
 }

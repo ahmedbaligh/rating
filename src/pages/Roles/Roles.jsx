@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 import { getAllUsers, getAllRoles, updateUser } from '../../utils/api';
+import { staticText } from '../../utils/data';
 
 import RolesPage, { Overlay } from './Roles.styles';
 import { AdminAssets } from '../../assets';
 import { InputField, Dropdown } from '../../components';
 import { LabeledDropDown } from '../Scraper/Scraper.styles';
 
-const Roles = () => {
+const Roles = ({ authedUser, language }) => {
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]);
   const [adminToEdit, setAdminToEdit] = useState(null);
@@ -31,17 +33,19 @@ const Roles = () => {
         user => user.userName === userInfo || user.emailAddress === userInfo
       );
     if (!newUser) {
-      setError('user not found');
+      setError(staticText.roles.error[language]);
       return;
     }
     setError(null);
     newUser = { ...newUser, roleNames: role[0] === -1 ? [] : role };
-    updateUser(newUser).then(() => {
-      setUsers(prev => [
-        ...prev.filter(user => user.id !== newUser.id),
-        newUser
-      ]);
-    });
+    updateUser(newUser)
+      .then(() => {
+        setUsers(prev => [
+          ...prev.filter(user => user.id !== newUser.id),
+          newUser
+        ]);
+      })
+      .finally(() => onCancel());
   };
 
   const onChange = e => {
@@ -50,28 +54,30 @@ const Roles = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    if (authedUser) {
       Promise.all([getAllUsers(), getAllRoles()]).then(([users, roles]) => {
         setUsers(users.data.result.items);
         setRoles(roles.data.result.items);
         setRole([roles.data.result.items[0].name.toUpperCase()]);
       });
-    }, 2000);
-  }, []);
+    }
+  }, [authedUser]);
   const admins = users.filter(user => user.roleNames.includes('ADMIN'));
   return (
     <RolesPage>
       <div className="roles-header">
-        <h1>Roles</h1>
-        <button onClick={() => setEditUser(true)}>+ Add Role</button>
+        <h1>{staticText.roles.name[language]}</h1>
+        <button onClick={() => setEditUser(true)}>
+          {staticText.roles.add[language]}
+        </button>
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th>{staticText.roles.username[language]}</th>
+            <th>{staticText.roles.email[language]}</th>
+            <th>{staticText.roles.role[language]}</th>
           </tr>
         </thead>
 
@@ -87,7 +93,8 @@ const Roles = () => {
                     setAdminToEdit(admin);
                   }}
                 >
-                  <img src={AdminAssets.edit} alt="edit"></img>Admin
+                  <img src={AdminAssets.edit} alt="edit"></img>
+                  {staticText.roles.admin[language]}
                 </button>
               </td>
             </tr>
@@ -100,13 +107,15 @@ const Roles = () => {
           <form onChange={onChange} onSubmit={onSave}>
             <InputField
               required
-              placeholder="Email or Username"
-              label="User"
+              placeholder={`${staticText.roles.username[language]} ${staticText.roles.or[language]} ${staticText.roles.email[language]}`}
+              label={staticText.roles.user[language]}
               disabled={adminToEdit}
               valueProp={adminToEdit?.userName || ''}
             />
             <LabeledDropDown>
-              <label htmlFor="role-pick">Role</label>
+              <label htmlFor="role-pick">
+                {staticText.roles.role[language]}
+              </label>
               <Dropdown
                 id="role-pick"
                 value={role[0]}
@@ -126,10 +135,12 @@ const Roles = () => {
               />
             </LabeledDropDown>
             <div className="btns">
-              <button onClick={onCancel}>Cancel</button>
+              <button onClick={onCancel}>
+                {staticText.roles.cancel[language]}
+              </button>
               <button className="save" type="submit">
                 {' '}
-                Save changes
+                {staticText.roles.save[language]}
               </button>
             </div>
             {error && <span className="error">*{error}</span>}
@@ -142,4 +153,7 @@ const Roles = () => {
   );
 };
 
-export default Roles;
+export default connect(({ authedUser, language }) => ({
+  authedUser,
+  language
+}))(Roles);

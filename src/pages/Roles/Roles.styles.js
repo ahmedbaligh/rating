@@ -32,7 +32,7 @@ export default styled.div`
     width: 100%;
     max-width: 1080px;
     border: 1px solid ${({ theme }) => theme.gray100};
-    text-align: inline-start;
+    text-align: start;
     font-size: 14px;
     border-radius: 10px;
     border-collapse: collapse;
@@ -51,6 +51,7 @@ export default styled.div`
       background-color: ${({ theme }) => theme.blue200};
 
       th {
+        text-align: start;
         padding: 18px;
         padding-inline-start: 0;
         &:first-child {
@@ -146,7 +147,7 @@ export const Overlay = styled.div`
     }
     .error {
       width: 100%;
-      text-align: inline-start;
+      text-align: start;
       font-size: 14px;
       font-weight: 400;
       color: var(--invalid-color);
