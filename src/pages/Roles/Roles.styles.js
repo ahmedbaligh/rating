@@ -31,13 +31,16 @@ export default styled.div`
   table {
     width: 100%;
     max-width: 1080px;
-    border: 1px solid ${({ theme }) => theme.gray100};
+    border: 1px solid
+      ${({ theme }) => (theme.dark ? theme.white900 : theme.gray100)};
     text-align: start;
     font-size: 14px;
     border-radius: 10px;
     border-collapse: collapse;
     overflow: hidden;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 4px
+      ${({ theme }) =>
+        theme.dark ? 'rgba(255, 255, 255, 0.35)' : 'rgba(0, 0, 0, 0.25)'};
     color: ${({ theme }) => theme.blue800};
     td,
     th {
@@ -61,6 +64,7 @@ export default styled.div`
       }
     }
     tbody {
+      color: ${({ theme }) => (theme.dark ? theme.white900 : theme.blue800)};
       td {
         padding: 27px 18px;
         padding-inline-start: 0;
@@ -81,8 +85,11 @@ export default styled.div`
           img {
             width: 18px;
             min-width: 18px;
-            filter: invert(13%) sepia(12%) saturate(4782%) hue-rotate(155deg)
-              brightness(96%) contrast(97%);
+            filter: ${({ theme }) =>
+              theme.dark
+                ? `invert(100%) sepia(3%) saturate(12%) hue-rotate(103deg) brightness(105%) contrast(105%)`
+                : `invert(13%) sepia(12%) saturate(4782%) hue-rotate(155deg)
+              brightness(96%) contrast(97%)`};
           }
         }
       }
@@ -122,7 +129,8 @@ export const Overlay = styled.div`
     gap: 24px;
     padding: 36px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-    background-color: ${({ theme }) => theme.white900};
+    background-color: ${({ theme }) =>
+      theme.dark ? theme.black900 : theme.white900};
     color: ${({ theme }) => theme.blue800};
     border: 1px solid ${({ theme }) => theme.gray100};
     border-radius: 10px;
