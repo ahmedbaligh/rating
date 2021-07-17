@@ -398,6 +398,70 @@
           "ar": "سجل الدخول"
         }
       }
+    },
+    "error": {
+      "en": "You cannot leave a field empty.",
+      "ar": "لا يمكنك ترك حقل فارغًا."
+    }
+  },
+  "signin": {
+    "heading": {
+      "en": "Sign in to Rating Hub",
+      "ar": "سجل الدخول إلى Rating Hub"
+    },
+    "divider": {
+      "en": "Or",
+      "ar": "أو"
+    },
+    "fields": {
+      "usernameEmail": {
+        "label": {
+          "en": "Username / Email",
+          "ar": "اسم المستخدم / البريد الإلكتروني"
+        },
+        "placeholder": {
+          "en": "Your unique handler or email address",
+          "ar": "اسم المستخدم الخاص بك أو بريدك الإلكتروني"
+        },
+        "error": {
+          "en": "This field cannot be left empty.",
+          "ar": "لا يمكنك ترك هذا الحقل فارغًا."
+        }
+      },
+      "password": {
+        "label": {
+          "en": "Password",
+          "ar": "كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Password must have at least 8 characters, 1 number, and 1 capital letter.",
+          "ar": "كلمة المرور يجب أن تتكون على الأقل من ٨ حروف ورقم وحرفٍ كبير."
+        }
+      }
+    },
+    "actions": {
+      "button": {
+        "en": "Sign in",
+        "ar": "سجل الدخول"
+      },
+      "signSwitch": {
+        "text": {
+          "en": "Don't have an account?",
+          "ar": "ليس لديك حساب؟"
+        },
+        "action": {
+          "en": "Sign up",
+          "ar": "أنشئ حسابك"
+        }
+      }
+    },
+    "error": {
+      "en": "Your username/email or password is incorrect.",
+      "ar": "اسم المستخدم/بريدك الإلكتروني أو كلمة مرورك بهم خطأ."
     }
   },
   "scraper": {

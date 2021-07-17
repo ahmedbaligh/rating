@@ -1,17 +1,22 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
+import { useHistory, Link } from 'react-router-dom';
 
 import { TopStores, InputField, Slider } from '../../components';
 import { SignupContainer, Button, SignCard } from './Signup.styles';
 import { logoGoogle } from '../../assets/Sign';
 import { staticText } from '../../utils/data';
 import { useUpdate } from '../../hooks';
+import { api } from '../../utils/api';
 
 const Signup = ({ language }) => {
   const { signup } = staticText;
 
+  const history = useHistory();
+
   const [inputs, setInputs] = useState({});
   const [areValid, setAreValid] = useState(false);
+  const [signupError, setSignupError] = useState(false);
 
   useUpdate(() => {
     setAreValid(() => {
@@ -25,17 +30,21 @@ const Signup = ({ language }) => {
     setInputs(prev => ({ ...prev, ...input }));
   }, []);
 
-  const onSignup = e => {
+  const onSignup = async e => {
     e.preventDefault();
-    console.log(
-      Object.keys(inputs).reduce(
-        (acc, key) => ({
-          ...acc,
-          [key]: inputs[key].value
-        }),
-        {}
-      )
+
+    const signupData = Object.entries(inputs).reduce(
+      (acc, [key, { value }]) => ({ ...acc, [key]: value }),
+      {}
     );
+
+    try {
+      await api.signup(signupData);
+      setSignupError(false);
+      history.push('/signin');
+    } catch (error) {
+      setSignupError(true);
+    }
   };
 
   return (
@@ -64,6 +73,12 @@ const Signup = ({ language }) => {
             </div>
 
             <form className="signup-form" onSubmit={onSignup}>
+              {signupError && (
+                <div className="invalid-sign">
+                  <p>{signup.error[language]}</p>
+                </div>
+              )}
+
               <div className="input-group">
                 <InputField
                   label={signup.fields.name.label[language]}
@@ -124,9 +139,9 @@ const Signup = ({ language }) => {
                 </Button.Sign>
                 <p className="sign-switch">
                   {signup.actions.signSwitch.text[language]}{' '}
-                  <span className="action">
+                  <Link to="/signin" className="action">
                     {signup.actions.signSwitch.action[language]}
-                  </span>
+                  </Link>
                 </p>
               </div>
             </form>
