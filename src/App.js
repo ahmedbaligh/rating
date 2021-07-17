@@ -5,8 +5,8 @@ import { theme } from './utils/data';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Home, Product, Error404, Admin } from './pages';
-import { Loading, Footer, Header } from './components';
+import { Home, Product, Error404, Admin, Signup, Signin } from './pages';
+import { Footer, Header, Loading } from './components';
 
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
@@ -50,24 +50,18 @@ const App = ({
 
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
-      {loading ? <Loading /> : ''}
-      <Route
-        exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
-        component={Header}
-      />
+      {loading ? <Loading /> : null}
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/signin" component={Signin} />
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/404-NOT-FOUND" component={Error404} />
         <Route exact path="/admin-panel" component={Admin} />
         <Route render={props => <Redirect to="/404-NOT-FOUND" {...props} />} />
       </Switch>
-      <Route
-        exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
-        component={Footer}
-      />
+      <Footer />
     </ThemeProvider>
   );
 };

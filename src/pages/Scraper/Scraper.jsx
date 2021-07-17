@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   scrapeProducts,
   getAllCategories,
-  getAllMarkets
+  getAllMarketplaces
 } from '../../utils/api';
 
 import { InputField, Dropdown } from '../../components';
@@ -24,7 +24,7 @@ const Scraper = ({ language }) => {
   const [numScraped, setNumScraped] = useState(0);
 
   useEffect(() => {
-    Promise.all([getAllMarkets(), getAllCategories()]).then(
+    Promise.all([getAllMarketplaces(), getAllCategories()]).then(
       ([markets, cats]) => {
         setMarkets(markets.data.result.items);
         setScrapingObj(prev => ({
