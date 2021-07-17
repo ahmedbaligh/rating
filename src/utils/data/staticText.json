@@ -398,6 +398,10 @@
           "ar": "سجل الدخول"
         }
       }
+    },
+    "error": {
+      "en": "You cannot leave a field empty.",
+      "ar": "لا يمكنك ترك حقل فارغًا."
     }
   },
   "signin": {

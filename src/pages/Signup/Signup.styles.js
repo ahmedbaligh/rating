@@ -95,6 +95,41 @@ export const SignCard = styled.div`
   border: 1px solid
     ${({ theme }) => (theme.dark ? theme.gray700 : 'transparent')};
 
+  .invalid-sign {
+    padding: 8px;
+    text-align: center;
+    margin-bottom: 1rem;
+    border: 1px solid
+      ${({ theme }) => (theme.dark ? theme.gray700 : theme.gray200)};
+    border-radius: 5px;
+    background-color: #fce6e2;
+    color: ${({ theme }) => theme.gray800};
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+  }
+
+  .sign-switch {
+    transition: color ${({ theme }) => theme.transitionDuration};
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    color: ${({ theme }) => (theme.dark ? theme.gray700 : theme.black700)};
+
+    .action {
+      transition: color ${({ theme }) => theme.transitionDuration};
+      color: ${({ theme }) => theme.blue900};
+      cursor: pointer;
+
+      &:hover {
+        color: ${({ theme }) => theme.blue500};
+      }
+    }
+  }
+
   .wrapper {
     width: 81%;
     display: flex;
@@ -167,24 +202,6 @@ export const SignCard = styled.div`
         @media (max-width: 450px) {
           flex-direction: column;
           gap: 18px;
-        }
-      }
-
-      .sign-switch {
-        transition: color ${({ theme }) => theme.transitionDuration};
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 500;
-        color: ${({ theme }) => (theme.dark ? theme.gray700 : theme.black700)};
-
-        .action {
-          transition: color ${({ theme }) => theme.transitionDuration};
-          color: ${({ theme }) => theme.blue900};
-          cursor: pointer;
-
-          &:hover {
-            color: ${({ theme }) => theme.blue500};
-          }
         }
       }
     }
