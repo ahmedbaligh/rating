@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import HomePage from './Home.styles';
 import { SearchBar, Button } from '../../components';
@@ -9,12 +10,19 @@ import { getProductsCount } from '../../utils/helpers/helpers';
 import { HomeAssets } from '../../assets';
 
 const Home = ({ language }) => {
+  const history = useHistory();
+
   const [focus, setFocus] = useState(false);
   const [subscriptionEmail, setSubscriptionEmail] = useState('');
 
   const { home } = staticText;
 
-  const onSearch = e => e.preventDefault();
+  const onSearch = e => {
+    e.preventDefault();
+
+    const searchString = e.target.querySelector('input').value;
+    history.push(`/search/${searchString}`);
+  };
 
   const onSubscription = () => setSubscriptionEmail('');
 

@@ -58,6 +58,12 @@ export default styled(Input)`
         text-overflow: ellipsis;
         cursor: pointer;
         color: ${({ theme }) => theme.black700};
+        transition: color ${({ theme }) => theme.transitionDuration};
+        padding-inline-end: 1rem;
+
+        &:is(:hover, :focus) {
+          color: ${({ theme }) => theme.blue500};
+        }
       }
     }
 
