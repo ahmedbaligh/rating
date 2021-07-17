@@ -112,6 +112,12 @@ export const getCategoryTree = async id => {
   });
 };
 
+export const searchByKeyword = ({ keyword, page = 0, maxCount = 20 }) =>
+  axiosDefault({
+    url: `/api/services/app/Product/GetProductsByKeyword/?KeyWord=${keyword}&SkipCount=${
+      maxCount * page
+    }&MaxCount=${maxCount}`
+  });
 //product end
 
 //categories

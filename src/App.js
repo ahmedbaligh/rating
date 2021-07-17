@@ -5,7 +5,7 @@ import { theme } from './utils/data';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { Home, Product, Error404, Admin } from './pages';
+import { Home, Product, Error404, Admin, Search } from './pages';
 import { Loading, Footer, Header } from './components';
 
 import { changeLanguage } from './redux/actions/language';
@@ -53,7 +53,13 @@ const App = ({
       {loading ? <Loading /> : ''}
       <Route
         exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
+        path={[
+          '/',
+          '/product/:slug',
+          '/404-NOT-FOUND',
+          '/search/:keyword',
+          '/category/:category'
+        ]}
         component={Header}
       />
       <Switch>
@@ -61,11 +67,22 @@ const App = ({
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/404-NOT-FOUND" component={Error404} />
         <Route exact path="/admin-panel" component={Admin} />
+        <Route
+          exact
+          path={['/search/:keyword', '/category/:category']}
+          component={Search}
+        />
         <Route render={props => <Redirect to="/404-NOT-FOUND" {...props} />} />
       </Switch>
       <Route
         exact
-        path={['/', '/product/:slug', '/404-NOT-FOUND', '/scraper']}
+        path={[
+          '/',
+          '/product/:slug',
+          '/404-NOT-FOUND',
+          '/search/:keyword',
+          '/category/:category'
+        ]}
         component={Footer}
       />
     </ThemeProvider>
