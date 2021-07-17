@@ -47,8 +47,6 @@ const Signin = ({ language }) => {
     }
   };
 
-  console.log(history.length);
-
   return (
     <SigninContainer language={language}>
       <SigninCard className="signin-content">
