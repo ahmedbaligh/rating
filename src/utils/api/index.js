@@ -12,3 +12,4 @@ export { default as getAllCategories } from './getAllCategories';
 export { default as getAllMarketplaces } from './getAllMarketplaces';
 export { default as scrapeProducts } from './scrapeProducts';
 export { default as getSearchSuggestions } from './getSearchSuggestions';
+export { default as searchByKeyword } from './searchByKeyword';
