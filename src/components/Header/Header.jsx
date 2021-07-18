@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 
 import { changeLanguage } from '../../redux/actions/language';
 import { toggleDarkTheme } from '../../redux/actions/darkTheme';
@@ -17,8 +18,15 @@ const Header = ({
   changeLanguage,
   darkTheme,
   toggleDarkTheme,
-  toggleSideBar
+  toggleSideBar,
+  authedUser
 }) => {
+  const history = useHistory();
+  const loginRedirect = () => {
+    if (!authedUser) {
+      history.push('/signin');
+    }
+  };
   return (
     <AppHeader>
       <div className="options group">
@@ -49,7 +57,11 @@ const Header = ({
 
         <div className="icons">
           <Icon name="heart outline" className="saved-items" />
-          <Icon name="user outline" className="user-account" />
+          <Icon
+            name="user outline"
+            className="user-account"
+            onClick={loginRedirect}
+          />
           <Icon
             name={`${darkTheme ? 'sun' : 'moon'} outline`}
             onClick={toggleDarkTheme}
@@ -67,6 +79,10 @@ const mapDispatchToProps = dispatch => ({
   toggleSideBar: () => dispatch(toggleSideBar())
 });
 
-const mapStateToProps = ({ language, darkTheme }) => ({ language, darkTheme });
+const mapStateToProps = ({ language, darkTheme, authedUser }) => ({
+  language,
+  darkTheme,
+  authedUser
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
