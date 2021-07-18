@@ -1,20 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 import { changeLanguage } from '../../redux/actions/language';
 import { toggleDarkTheme } from '../../redux/actions/darkTheme';
+import { toggleSideBar } from '../../redux/actions/sideBarOn';
 
 import AppHeader from './Header.styles';
 import { NavToggler, Dropdown, SearchBar } from '../';
 import { languages, staticText } from '../../utils/data';
-import siteLogo from '../../assets/Logo.svg';
+import { appLogo, appLogoMin } from '../../assets';
 
-const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
+const Header = ({
+  language,
+  changeLanguage,
+  darkTheme,
+  toggleDarkTheme,
+  toggleSideBar
+}) => {
   return (
     <AppHeader>
       <div className="options group">
-        <NavToggler closable />
+        <NavToggler action={() => toggleSideBar()} />
         <Dropdown
           options={languages}
           value={language}
@@ -22,9 +30,12 @@ const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
         />
       </div>
 
-      <div className="site-logo">
-        <img src={siteLogo} alt="Site Logo" />
-      </div>
+      <Link to="/" className="site-logo">
+        <picture>
+          <source media="(max-width: 650px)" srcSet={appLogoMin} />
+          <img src={appLogo} alt="Site Logo" />
+        </picture>
+      </Link>
 
       <div className="options group">
         <div className="header-search">
@@ -52,7 +63,8 @@ const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
 
 const mapDispatchToProps = dispatch => ({
   changeLanguage: lang => dispatch(changeLanguage(lang)),
-  toggleDarkTheme: () => dispatch(toggleDarkTheme())
+  toggleDarkTheme: () => dispatch(toggleDarkTheme()),
+  toggleSideBar: () => dispatch(toggleSideBar())
 });
 
 const mapStateToProps = ({ language, darkTheme }) => ({ language, darkTheme });

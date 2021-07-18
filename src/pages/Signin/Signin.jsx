@@ -6,7 +6,7 @@ import { TopStores, InputField } from '../../components';
 import { SigninContainer, SigninCard, Button } from './Signin.styles';
 import { logoGoogle } from '../../assets/Sign';
 import { staticText } from '../../utils/data';
-import { useUpdate } from '../../hooks';
+import { useTitle, useUpdate } from '../../hooks';
 import { api } from '../../utils/api';
 
 const Signin = ({ language }) => {
@@ -17,6 +17,8 @@ const Signin = ({ language }) => {
   const [inputs, setInputs] = useState({});
   const [areValid, setAreValid] = useState(false);
   const [signinError, setSigninError] = useState(false);
+
+  useTitle('Sign in');
 
   useUpdate(() => {
     setAreValid(() => {
