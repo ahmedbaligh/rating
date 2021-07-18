@@ -6,7 +6,7 @@ import { TopStores, InputField, Slider } from '../../components';
 import { SignupContainer, Button, SignCard } from './Signup.styles';
 import { logoGoogle } from '../../assets/Sign';
 import { staticText } from '../../utils/data';
-import { useUpdate } from '../../hooks';
+import { useTitle, useUpdate } from '../../hooks';
 import { api } from '../../utils/api';
 
 const Signup = ({ language }) => {
@@ -17,6 +17,8 @@ const Signup = ({ language }) => {
   const [inputs, setInputs] = useState({});
   const [areValid, setAreValid] = useState(false);
   const [signupError, setSignupError] = useState(false);
+
+  useTitle('Sign up');
 
   useUpdate(() => {
     setAreValid(() => {

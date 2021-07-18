@@ -8,7 +8,7 @@ import { toggleDarkTheme } from '../../redux/actions/darkTheme';
 import AppHeader from './Header.styles';
 import { NavToggler, Dropdown, SearchBar } from '../';
 import { languages, staticText } from '../../utils/data';
-import siteLogo from '../../assets/Logo.svg';
+import { appLogo, appLogoMin } from '../../assets';
 
 const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
   return (
@@ -22,8 +22,14 @@ const Header = ({ language, changeLanguage, darkTheme, toggleDarkTheme }) => {
         />
       </div>
 
-      <div className="site-logo">
-        <img src={siteLogo} alt="Site Logo" />
+      <div
+        className="site-logo"
+        onClick={() => changeLanguage(language === 'en' ? 'ar' : 'en')}
+      >
+        <picture>
+          <source media="(max-width: 650px)" srcSet={appLogoMin} />
+          <img src={appLogo} alt="Site Logo" />
+        </picture>
       </div>
 
       <div className="options group">
