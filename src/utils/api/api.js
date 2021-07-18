@@ -4,7 +4,7 @@ import store from '../../redux/store';
 import { toggleLoading } from '../../redux/actions/loading';
 
 const axiosDefault = axios.create({
-  baseURL: 'http://amr11mahmoud-001-site1.etempurl.com',
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
     'Content-Type': 'application/json'
   }
