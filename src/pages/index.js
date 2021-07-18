@@ -6,3 +6,4 @@ export { default as Error404 } from './Error404/Error404';
 export { default as Scraper } from './Scraper/Scraper';
 export { default as Admin } from './Admin/Admin';
 export { default as Roles } from './Roles/Roles';
+export { default as Search } from './Search/Search';

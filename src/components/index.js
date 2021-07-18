@@ -10,3 +10,4 @@ export { default as TopStores } from './TopStores/TopStores';
 export { default as Slider } from './Slider/Slider';
 export { default as SideBar } from './SideBar/SideBar';
 export { default as AppSidebar } from './AppSidebar/AppSidebar';
+export { default as ProductCard } from './ProductCard/ProductCard';
