@@ -12,7 +12,8 @@ import {
   Admin,
   Signup,
   Signin,
-  Search
+  Search,
+  FAQ
 } from './pages';
 import { Footer, Header, Loading, AppSidebar } from './components';
 
@@ -70,7 +71,8 @@ const App = ({
             '/search/:keyword',
             '/search/:category',
             '/signin',
-            '/signup'
+            '/signup',
+            '/faq'
           ]}
         >
           <Header />
@@ -105,6 +107,10 @@ const App = ({
             <Search />
           </Route>
 
+          <Route exact path="/faq">
+            <FAQ />
+          </Route>
+
           <Redirect exact from="*" to="/404" />
         </Switch>
 
@@ -116,7 +122,8 @@ const App = ({
             '/search/:keyword',
             '/search/:category',
             '/signup',
-            '//signup'
+            '/signup',
+            '/faq'
           ]}
         >
           <Footer />
