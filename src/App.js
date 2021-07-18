@@ -59,49 +59,68 @@ const App = ({
   return (
     <ThemeProvider theme={{ ...theme, dark }}>
       {loading ? <Loading /> : null}
+
       <AppSidebar>
         <Route
           exact
           path={[
             '/',
             '/product/:slug',
-            '/404-NOT-FOUND',
+            '/404',
             '/search/:keyword',
             '/search/:category',
             '/signin',
             '/signup'
           ]}
-          component={Header}
-        />
+        >
+          <Header />
+        </Route>
+
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/product/:slug" component={Product} />
-          <Route exact path="/404-NOT-FOUND" component={Error404} />
-          <Route exact path="/admin-panel" component={Admin} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/signin" component={Signin} />
-          <Route
-            exact
-            path={['/search/:keyword', '/search/:category']}
-            component={Search}
-          />
-          <Route
-            render={props => <Redirect to="/404-NOT-FOUND" {...props} />}
-          />
+          <Route exact path="/">
+            <Home />
+          </Route>
+
+          <Route exact path="/product/:slug">
+            <Product />
+          </Route>
+
+          <Route exact path="/404">
+            <Error404 />
+          </Route>
+
+          <Route exact path="/admin-panel">
+            <Admin />
+          </Route>
+
+          <Route exact path="/signup">
+            <Signup />
+          </Route>
+
+          <Route exact path="/signin">
+            <Signin />
+          </Route>
+
+          <Route exact path={['/search/:keyword', '/search/:category']}>
+            <Search />
+          </Route>
+
+          <Redirect exact from="*" to="/404" />
         </Switch>
+
         <Route
           exact
           path={[
             '/',
             '/product/:slug',
-            '/404-NOT-FOUND',
             '/search/:keyword',
             '/search/:category',
             '/signup',
             '//signup'
           ]}
-          component={Footer}
-        />
+        >
+          <Footer />
+        </Route>
       </AppSidebar>
     </ThemeProvider>
   );
