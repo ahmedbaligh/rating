@@ -51,30 +51,26 @@ export default styled.header`
   }
 
   @media (max-width: 1000px) {
-    & {
-      gap: 30px;
+    gap: 30px;
 
-      .options.group:first-child {
-        flex-grow: 0;
+    .options.group:first-child {
+      flex-grow: 0;
 
-        .ui.dropdown.inline {
-          display: none;
-        }
+      .ui.dropdown.inline {
+        display: none;
       }
+    }
 
-      .site-logo {
-        max-width: 80px;
-      }
-
-      .options.group:last-child {
-        flex-grow: 2;
-      }
+    .options.group:last-child {
+      flex-grow: 2;
     }
   }
 
-  @media (max-width: 600px) {
-    & {
-      padding-inline: 25px 20px;
+  @media (max-width: 650px) {
+    padding-inline: 25px 20px;
+
+    .site-logo {
+      max-width: 60px;
     }
 
     .options.group .header-search .search-bar {
