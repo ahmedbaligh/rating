@@ -571,5 +571,37 @@
       "en": "User was not found",
       "ar": "لا يوجد مستخدم بهذه البيانات"
     }
+  },
+  "search": {
+    "result": {
+      "en": " Search results for",
+      "ar": "نتيجة بحثك عن"
+    },
+    "sort": {
+      "name": {
+        "en": "Sort by",
+        "ar": "ترتيب حسب"
+      },
+      "topRated": {
+        "en": "Top Rated",
+        "ar": "الأعلي تقيم"
+      },
+      "lowPrice": {
+        "en": "Lowest Price",
+        "ar": "الأقل سعر"
+      },
+      "highPrice": {
+        "en": "Highest Price",
+        "ar": "الأعلي سعر"
+      }
+    },
+    "details": {
+      "en": "See Details",
+      "ar": "عرض التفاصيل"
+    },
+    "showMore": {
+      "en": "+ Show more",
+      "ar": "+ اظهار المزيد"
+    }
   }
 }

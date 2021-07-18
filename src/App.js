@@ -19,7 +19,7 @@ import { Footer, Header, Loading, AppSidebar } from './components';
 import { changeLanguage } from './redux/actions/language';
 import { toggleDarkTheme } from './redux/actions/darkTheme';
 import { getAuthedUser } from './redux/actions/authedUser';
-import { axiosDefault } from './utils/api';
+import { axiosDefault, getSearchSuggestions } from './utils/api';
 
 const App = ({
   darkTheme: dark,
@@ -31,6 +31,7 @@ const App = ({
   loading
 }) => {
   useEffect(() => {
+    getSearchSuggestions('iphone');
     if (localStorage.getItem('token')) {
       axiosDefault.defaults.headers.common['Authorization'] =
         localStorage.getItem('token');

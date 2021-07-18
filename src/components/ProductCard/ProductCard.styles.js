@@ -7,7 +7,7 @@ export default styled.div`
   gap: 24px;
   width: 300px;
   height: 380px;
-  padding: 36px;
+  padding: 36px 18px;
   background-color: ${({ theme }) => theme.white900};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;

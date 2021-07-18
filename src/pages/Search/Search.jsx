@@ -11,12 +11,14 @@ import { ProductCard, Dropdown } from '../../components';
 import { useUpdate } from '../../hooks';
 
 import { Checkbox } from 'semantic-ui-react';
+import { staticText } from '../../utils/data';
 
-const Search = ({ toggleLoading }) => {
+const Search = ({ toggleLoading, language }) => {
   const MAX_COUNT = 20;
 
   const [allProducts, setAllProducts] = useState([]);
   const [page, setPage] = useState(0);
+  const [lastPage, setLastPage] = useState(false);
   const { keyword, category } = useParams();
 
   const [filterNames, setFilterNames] = useState({ categories: [], specs: [] });
@@ -27,32 +29,33 @@ const Search = ({ toggleLoading }) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const sortOpts = [
-    { key: 'srtopt1000', value: 'desc%Srating', text: 'Top Rated' },
-    { key: 'srtopt1001', value: 'asc%Sprice', text: 'Lowest Price' },
-    { key: 'srtopt1002', value: 'desc%Sprice', text: 'Highest Price' }
+    {
+      key: 'srtopt1000',
+      value: 'desc%Srating',
+      text: staticText.search.sort.topRated[language]
+    },
+    {
+      key: 'srtopt1001',
+      value: 'asc%Sprice',
+      text: staticText.search.sort.lowPrice[language]
+    },
+    {
+      key: 'srtopt1002',
+      value: 'desc%Sprice',
+      text: staticText.search.sort.highPrice[language]
+    }
   ];
   const [sortAtrr, setSortAtrr] = useState(sortOpts[0].value);
 
-  const resetState = () => {
-    setAllProducts([]);
-    setPage(0);
-    setFilterNames({ categories: [], specs: [] });
-    setAppliedFilters({
-      category: '',
-      specs: {}
-    });
-    setFilteredProducts([]);
-  };
-
   useEffect(() => {
     toggleLoading(true);
-    searchByKeyword({ keyword, maxCount: MAX_COUNT })
+    searchByKeyword({ keyword, maxCount: MAX_COUNT, page: page })
       .then(res => {
-        setAllProducts(res.data.result.items);
+        setAllProducts(prev => [...prev, ...res.data.result.items]);
+        if (res.data.result.totalCount < MAX_COUNT) setLastPage(true);
       })
       .finally(() => toggleLoading(0));
-    return () => resetState();
-  }, [keyword, category, toggleLoading]);
+  }, [keyword, category, toggleLoading, page]);
 
   useUpdate(() => {
     setFilterNames(extractFilters(allProducts));
@@ -79,9 +82,31 @@ const Search = ({ toggleLoading }) => {
         products: allProducts,
         category: appliedFilters.category,
         specs: appliedFilters.specs
-      })
+      })?.sort((a, b) => compare(a, b, sortAtrr))
     );
   }, [appliedFilters, allProducts]);
+
+  const compare = (a, b, value) => {
+    const atrr = value.split('%S')[1];
+    const order = value.split('%S')[0];
+    let res = 0;
+    switch (atrr) {
+      case 'price':
+        res =
+          parseFloat(b[atrr].toString().replaceAll(',', '')) -
+          parseFloat(a[atrr].toString().replaceAll(',', ''));
+        break;
+      default:
+        res = b[atrr] - a[atrr];
+    }
+    if (order === 'asc') res = res * -1;
+    return res;
+  };
+
+  const onSortChange = (_, { value }) => {
+    setSortAtrr(value);
+    setFilteredProducts(prev => prev.sort((a, b) => compare(a, b, value)));
+  };
 
   return (
     <>
@@ -160,15 +185,15 @@ const Search = ({ toggleLoading }) => {
           <div className="card-list">
             <div className="result-header">
               <span>
-                Search results for <b>{keyword}</b>
+                {staticText.search.result[language]} <b>{keyword}</b>
               </span>
               <div className="result-sort">
-                Sort by
+                {staticText.search.sort.name[language]}
                 <Dropdown
                   id="category"
                   value={sortAtrr}
                   options={sortOpts}
-                  onChange={(_, { value }) => setSortAtrr(value)}
+                  onChange={onSortChange}
                 />
               </div>
             </div>
@@ -176,6 +201,16 @@ const Search = ({ toggleLoading }) => {
               <ProductCard key={`prdct${product.id}`} product={product} />
             ))}
           </div>
+          {!lastPage ? (
+            <button
+              className="show-more-btn"
+              onClick={() => setPage(prev => prev + 1)}
+            >
+              {staticText.search.showMore[language]}
+            </button>
+          ) : (
+            ''
+          )}
         </div>
       </Result>
     </>

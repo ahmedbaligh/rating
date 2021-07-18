@@ -28,7 +28,9 @@ const ProductCard = ({ product, language }) => {
 
       <div className="card-info">
         <span className="market-name">{product.marketPlace}</span>
-        <Link to={`/product/${product.id}`}>See Details</Link>
+        <Link to={`/product/${product.id}`}>
+          {staticText.search.details[language]}
+        </Link>
       </div>
     </Card>
   );
