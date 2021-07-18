@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container, Icon } from 'semantic-ui-react';
 
@@ -41,9 +42,9 @@ const Footer = ({ language }) => {
               <h4 className="group-title">{title[language]}</h4>
               <div className="links">
                 {links.map((link, i) => (
-                  <span key={i} className="link">
+                  <Link to={link['en']} key={i} className="link">
                     {link[language]}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </div>
