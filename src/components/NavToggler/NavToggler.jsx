@@ -2,10 +2,14 @@ import React, { useRef } from 'react';
 
 import Toggler from './NavToggler.styles';
 
-const NavToggler = ({ closable }) => {
+const NavToggler = ({ closable, action }) => {
   const ref = useRef();
 
-  const onToggle = () => ref.current.classList.toggle('open');
+  const onToggle = () => {
+    closable && ref.current.classList.toggle('open');
+
+    action();
+  };
 
   return (
     <Toggler closable={closable} onClick={onToggle} ref={ref}>

@@ -142,6 +142,105 @@
       }
     }
   ],
+  "sidebar": {
+    "general": {
+      "items": [
+        { "en": "Home", "ar": "الصفحة الرئيسية", "slug": "" },
+        { "en": "My Account", "ar": "حسابي", "slug": "account" },
+        { "en": "Sign in", "ar": "تسجيل الدخول", "slug": "signin" },
+        { "en": "Sign up", "ar": "إنشاء حساب", "slug": "signup" },
+        { "en": "Admin Panel", "ar": "المسئولون", "slug": "admin-panel" }
+      ]
+    },
+    "categories": {
+      "title": { "en": "Categories", "ar": "الفئات" },
+      "items": [
+        { "en": "Computers", "ar": "الحواسيب" },
+        { "en": "Mobile Phones", "ar": "الهواتف المحمولة" },
+        { "en": "Sports", "ar": "الرياضة" },
+        { "en": "Fashion", "ar": "الموضة" }
+      ]
+    },
+    "languages": {
+      "title": { "en": "Languages", "ar": "اللغات" },
+      "items": [
+        { "key": "en", "name": "English" },
+        { "key": "ar", "name": "العربية" }
+      ]
+    }
+  },
+  "faq": {
+    "heading": {
+      "en": "Have a question? Take a look here:",
+      "ar": "لديك سؤال؟ ابحث عنه هنا:"
+    },
+    "contactUS": {
+      "en": "Still cannot find an answer? Email us at info@ratinghub.com.",
+      "ar": "ما زلت لم تستطع إيجاد إجابة؟ راسلنا على info@ratinghub.com."
+    },
+    "questions": [
+      {
+        "question": {
+          "en": "What is Rating Hub?",
+          "ar": "ما هو Rating Hub؟"
+        },
+        "answer": {
+          "en": "Rating Hub is an e-commerce product recommender platform, where we find you the best product from top marketplaces.",
+          "ar": "Rating Hub هى منصة ترشيحية لمنتجات التسوق الإلكتروني، حيث نقوم بترشيح المنتج الأفضل لك من أفضل المتاجر الإلكترونية."
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      }
+    ]
+  },
   "home": {
     "hero": {
       "brandText": [

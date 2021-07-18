@@ -7,3 +7,4 @@ export { default as Scraper } from './Scraper/Scraper';
 export { default as Admin } from './Admin/Admin';
 export { default as Roles } from './Roles/Roles';
 export { default as Search } from './Search/Search';
+export { default as FAQ } from './FAQ/FAQ';
