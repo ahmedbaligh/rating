@@ -42,8 +42,7 @@ const SearchBar = ({
     if (keyword) {
       try {
         const { data } = await getSearchSuggestions(keyword);
-
-        results = [...new Set(data.result.slice(0, max))];
+        results = [...new Set(data.result.items.slice(0, max))];
       } catch (error) {
         results = ['An error occurred. No results found.'];
       }
