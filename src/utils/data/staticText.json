@@ -1,0 +1,706 @@
+{
+  "header": {
+    "searchPlaceholder": {
+      "en": "Search",
+      "ar": "ابحث"
+    }
+  },
+  "footer": {
+    "followUs": {
+      "title": {
+        "en": "Follow us",
+        "ar": "تابعنا"
+      }
+    },
+    "subscription": {
+      "title": {
+        "en": "Subscribe to us",
+        "ar": "اشترك معنا"
+      },
+      "emailPlaceholder": {
+        "en": "Email address",
+        "ar": "البريد الإلكتروني"
+      }
+    },
+    "nav": [
+      {
+        "title": {
+          "en": "Our company",
+          "ar": "شركتنا"
+        },
+        "links": [
+          {
+            "en": "How we work",
+            "ar": "طريقة عملنا"
+          },
+          {
+            "en": "Why Rating?",
+            "ar": "لما نحن؟"
+          },
+          {
+            "en": "Reviews",
+            "ar": "التقييمات"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Useful links",
+          "ar": "روابط مفيدة"
+        },
+        "links": [
+          {
+            "en": "Categories",
+            "ar": "الفئات"
+          },
+          {
+            "en": "Brands",
+            "ar": "العلامات التجارية"
+          },
+          {
+            "en": "Stores",
+            "ar": "المتاجر"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Help me",
+          "ar": "المساعدة"
+        },
+        "links": [
+          {
+            "en": "FAQ",
+            "ar": "الأسئلة الشائعة"
+          },
+          {
+            "en": "Terms of use",
+            "ar": "شروط الاستخدام"
+          },
+          {
+            "en": "Privacy policy",
+            "ar": "سياسة الخصوصية"
+          },
+          {
+            "en": "Cookies",
+            "ar": "ملفات تعريف الارتباط"
+          }
+        ]
+      },
+      {
+        "title": {
+          "en": "Others",
+          "ar": "أُخرى"
+        },
+        "links": [
+          {
+            "en": "Careers",
+            "ar": "اعمل معنا"
+          },
+          {
+            "en": "Press",
+            "ar": "الإعلام"
+          },
+          {
+            "en": "Licenses",
+            "ar": "تراخيص الاستخدام"
+          }
+        ]
+      }
+    ],
+    "copyrights": {
+      "en": "© 2021 | All Rights Reserved | Rating Inc.",
+      "ar": "© ٢٠٢١ | جميع الحقوق محفوظة | شركة Rating"
+    }
+  },
+  "topStores": {
+    "title": {
+      "en": "Explore products from top stores",
+      "ar": "استكشف المنتجات من أفضل المتاجر"
+    }
+  },
+  "slider": [
+    {
+      "name": "avoidScam",
+      "legend": {
+        "en": "Avoid scam and over-priced products.",
+        "ar": "تجنب الاحتيال والأسعار المُبالغ بها."
+      }
+    },
+    {
+      "name": "topRated",
+      "legend": {
+        "en": "Don’t Settle For Less. Always Get Top Rated Products.",
+        "ar": "لا ترضى بالتسويات، احصل دائمًا على أفضل المنتجات."
+      }
+    },
+    {
+      "name": "beInControl",
+      "legend": {
+        "en": "Be In-Control And Shop Safely.",
+        "ar": "كُن المتحكم وتسوق بأمان."
+      }
+    }
+  ],
+  "sidebar": {
+    "general": {
+      "items": [
+        { "en": "Home", "ar": "الصفحة الرئيسية", "slug": "" },
+        { "en": "My Account", "ar": "حسابي", "slug": "account" },
+        { "en": "Sign in", "ar": "تسجيل الدخول", "slug": "signin" },
+        { "en": "Sign up", "ar": "إنشاء حساب", "slug": "signup" },
+        { "en": "Admin Panel", "ar": "المسئولون", "slug": "admin-panel" }
+      ]
+    },
+    "categories": {
+      "title": { "en": "Categories", "ar": "الفئات" },
+      "items": [
+        { "en": "Computers", "ar": "الحواسيب" },
+        { "en": "Mobile Phones", "ar": "الهواتف المحمولة" },
+        { "en": "Sports", "ar": "الرياضة" },
+        { "en": "Fashion", "ar": "الموضة" }
+      ]
+    },
+    "languages": {
+      "title": { "en": "Languages", "ar": "اللغات" },
+      "items": [
+        { "key": "en", "name": "English" },
+        { "key": "ar", "name": "العربية" }
+      ]
+    }
+  },
+  "faq": {
+    "heading": {
+      "en": "Have a question? Take a look here:",
+      "ar": "لديك سؤال؟ ابحث عنه هنا:"
+    },
+    "contactUS": {
+      "en": "Still cannot find an answer? Email us at info@ratinghub.com.",
+      "ar": "ما زلت لم تستطع إيجاد إجابة؟ راسلنا على info@ratinghub.com."
+    },
+    "questions": [
+      {
+        "question": {
+          "en": "What is Rating Hub?",
+          "ar": "ما هو Rating Hub؟"
+        },
+        "answer": {
+          "en": "Rating Hub is an e-commerce product recommender platform, where we find you the best product from top marketplaces.",
+          "ar": "Rating Hub هى منصة ترشيحية لمنتجات التسوق الإلكتروني، حيث نقوم بترشيح المنتج الأفضل لك من أفضل المتاجر الإلكترونية."
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      },
+      {
+        "question": {
+          "en": "What is Rating?",
+          "ar": "ما هو Rating"
+        },
+        "answer": {
+          "en": "Rating is ",
+          "ar": "Rating هو "
+        }
+      }
+    ]
+  },
+  "home": {
+    "hero": {
+      "brandText": [
+        {
+          "en": "Avoid Scam.",
+          "ar": "تجنب المُحتالين."
+        },
+        {
+          "en": "Shop Safely.",
+          "ar": "تسوق بشكلٍ آمن."
+        },
+        {
+          "en": "Be in control.",
+          "ar": "تولىّ التحكم."
+        }
+      ],
+      "button": {
+        "en": "Search now",
+        "ar": "ابحث الآن"
+      }
+    },
+    "search": {
+      "heading": {
+        "en": "Discover the best deals and sales in Egypt!",
+        "ar": "اكتشف أفضل العروض والخصومات في مصر!"
+      },
+      "searchPlaceholder": {
+        "en": "What are you looking for?",
+        "ar": "ما الذي تريد البحث عنه؟"
+      },
+      "button": {
+        "en": "Search",
+        "ar": "ابحث"
+      }
+    },
+    "categories": {
+      "names": [
+        {
+          "name": {
+            "en": "All categories",
+            "ar": "كل الفئات"
+          }
+        },
+        {
+          "name": {
+            "en": "Smartphones",
+            "ar": "الهواتف الذكية"
+          }
+        },
+        {
+          "name": {
+            "en": "Fashion",
+            "ar": "الموضة"
+          }
+        },
+        {
+          "name": {
+            "en": "Computers",
+            "ar": "الحواسيب"
+          }
+        },
+        {
+          "name": {
+            "en": "Sports",
+            "ar": "الرياضة"
+          }
+        }
+      ],
+      "countUnit": {
+        "en": "products",
+        "ar": "منتج"
+      }
+    },
+    "newsletter": {
+      "heading": {
+        "en": "Chance to win a $200 shopping gift card!",
+        "ar": "فرصة للفوز بقسيمة مشتريات بقيمة ٢٠٠ دولار! "
+      },
+      "description": {
+        "en": "Subscribe to Rating’s newsletter and get a chance to win $200.",
+        "ar": "اشترك في نشرتنا واحصل على فرصة للفوز بـ ٢٠٠ دولار."
+      },
+      "emailPlaceholder": {
+        "en": "Email address",
+        "ar": "البريد الإلكتروني"
+      },
+      "button": {
+        "en": "Subscribe",
+        "ar": "اشترك"
+      }
+    }
+  },
+  "product": {
+    "hero": {
+      "details": {
+        "en": "View all details",
+        "ar": "التفاصيل"
+      },
+      "rating": {
+        "name": {
+          "en": "Rating",
+          "ar": "التقييم"
+        },
+        "ratings": {
+          "en": "Ratings",
+          "ar": "تقييم"
+        }
+      },
+      "addRating": {
+        "en": "Add rating",
+        "ar": "اضافة تقييم"
+      },
+      "report": {
+        "en": "Report",
+        "ar": "ابلاغ عن مشكلة"
+      },
+      "currency": {
+        "en": "L.E",
+        "ar": "ج.م"
+      }
+    },
+    "details": {
+      "heading": {
+        "en": "Details",
+        "ar": "التفاصيل"
+      },
+      "specs": {
+        "en": "Product Specifications",
+        "ar": "المواصفات"
+      }
+    },
+    "other": {
+      "heading": {
+        "en": "Other Sellers",
+        "ar": "متاجر اخرى"
+      },
+      "showAll": {
+        "en": "Show all sellers",
+        "ar": "عرض كل المتاجر"
+      }
+    },
+    "reviews": {
+      "heading": {
+        "en": "Reviews",
+        "ar": "التعليقات"
+      },
+      "prev": {
+        "en": "< Previous Reviews",
+        "ar": "< التعليقات السابقة"
+      },
+      "next": {
+        "en": "Next Reviews >",
+        "ar": " المزيد من التعليقات >"
+      }
+    },
+    "buy": {
+      "en": "Buy from",
+      "ar": "اشتري من"
+    }
+  },
+  "signup": {
+    "heading": {
+      "en": "Sign up to Rating Hub",
+      "ar": "أنشئ حسابك في Rating Hub"
+    },
+    "divider": {
+      "en": "Or",
+      "ar": "أو"
+    },
+    "fields": {
+      "name": {
+        "label": {
+          "en": "Name",
+          "ar": "الاسم"
+        },
+        "placeholder": {
+          "en": "Your full name",
+          "ar": "اسمك كاملًا"
+        },
+        "error": {
+          "en": "You must provide a name.",
+          "ar": "يجب أن تدخل اسمًا."
+        }
+      },
+      "username": {
+        "label": {
+          "en": "Username",
+          "ar": "اسم المستخدم"
+        },
+        "placeholder": {
+          "en": "Your unique handler",
+          "ar": "اسم مستخدم فريد"
+        },
+        "error": {
+          "en": "Username cannot begin with a number.",
+          "ar": "اسم المستخدم لا يجب أن يبدأ برقم."
+        }
+      },
+      "email": {
+        "label": {
+          "en": "Email",
+          "ar": "البريد الإلكتروني"
+        },
+        "placeholder": {
+          "en": "you@company.com",
+          "ar": "بريدك الإلكتروني"
+        },
+        "error": {
+          "en": "Provide a vaild email address.",
+          "ar": "أدخل بريدًا إلكترونيًا صحيحًا."
+        }
+      },
+      "password": {
+        "label": {
+          "en": "Password",
+          "ar": "كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Password must have at least 8 characters, 1 number, and 1 capital letter.",
+          "ar": "كلمة المرور يجب أن تتكون على الأقل من ٨ حروف ورقم وحرفٍ كبير."
+        }
+      },
+      "confirmPassword": {
+        "label": {
+          "en": "Confirm Password",
+          "ar": "تأكيد كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Passwords must match.",
+          "ar": "يجب أن تتوافق كلمتى المرور."
+        }
+      }
+    },
+    "actions": {
+      "button": {
+        "en": "Create Account",
+        "ar": "أنشئ حسابك"
+      },
+      "signSwitch": {
+        "text": {
+          "en": "Already have an account?",
+          "ar": "بالفعل لديك حساب؟"
+        },
+        "action": {
+          "en": "Sign in",
+          "ar": "سجل الدخول"
+        }
+      }
+    },
+    "error": {
+      "en": "You cannot leave a field empty.",
+      "ar": "لا يمكنك ترك حقل فارغًا."
+    }
+  },
+  "signin": {
+    "heading": {
+      "en": "Sign in to Rating Hub",
+      "ar": "سجل الدخول إلى Rating Hub"
+    },
+    "divider": {
+      "en": "Or",
+      "ar": "أو"
+    },
+    "fields": {
+      "usernameEmail": {
+        "label": {
+          "en": "Username / Email",
+          "ar": "اسم المستخدم / البريد الإلكتروني"
+        },
+        "placeholder": {
+          "en": "Your unique handler or email address",
+          "ar": "اسم المستخدم الخاص بك أو بريدك الإلكتروني"
+        },
+        "error": {
+          "en": "This field cannot be left empty.",
+          "ar": "لا يمكنك ترك هذا الحقل فارغًا."
+        }
+      },
+      "password": {
+        "label": {
+          "en": "Password",
+          "ar": "كلمة المرور"
+        },
+        "placeholder": {
+          "en": "8+ Characters",
+          "ar": "٨+ حرف"
+        },
+        "error": {
+          "en": "Password must have at least 8 characters, 1 number, and 1 capital letter.",
+          "ar": "كلمة المرور يجب أن تتكون على الأقل من ٨ حروف ورقم وحرفٍ كبير."
+        }
+      }
+    },
+    "actions": {
+      "button": {
+        "en": "Sign in",
+        "ar": "سجل الدخول"
+      },
+      "signSwitch": {
+        "text": {
+          "en": "Don't have an account?",
+          "ar": "ليس لديك حساب؟"
+        },
+        "action": {
+          "en": "Sign up",
+          "ar": "أنشئ حسابك"
+        }
+      }
+    },
+    "error": {
+      "en": "Your username/email or password is incorrect.",
+      "ar": "اسم المستخدم/بريدك الإلكتروني أو كلمة مرورك بهم خطأ."
+    }
+  },
+  "scraper": {
+    "name": {
+      "en": "Scraper",
+      "ar": "الاسقرابر"
+    },
+    "scrape": {
+      "en": "Scrape new products",
+      "ar": "اضافة منتجات"
+    },
+    "keyword": {
+      "en": "Keyword",
+      "ar": "الكلمة المفتاحية"
+    },
+    "category": {
+      "en": "Category",
+      "ar": "الفئة"
+    },
+    "numPages": {
+      "en": "Number of pages",
+      "ar": "عدد الصفحات"
+    },
+    "market": {
+      "en": "Marketplace",
+      "ar": "اسم المتجر"
+    },
+    "scraped": {
+      "en": "products were successfully scraped",
+      "ar": "منتج تم جمعهم بنجاح",
+      "error": {
+        "en": "Some error happend, please try again",
+        "ar": "حدث خطأ برجاء المحاولة مرة اخرى"
+      }
+    },
+    "ex": {
+      "name": {
+        "en": "Ex.",
+        "ar": "مثال"
+      },
+      "category": {
+        "en": "nokia",
+        "ar": "نوكيا"
+      }
+    }
+  },
+  "side": {
+    "home": {
+      "en": "Home",
+      "ar": "الصفحة الرئيسية"
+    },
+    "roles": {
+      "en": "Roles",
+      "ar": "الادوار"
+    },
+    "scraper": {
+      "en": "Scraper",
+      "ar": "الاسقرابر"
+    },
+    "logout": {
+      "en": "Logout",
+      "ar": "تسجيل الخروج"
+    }
+  },
+  "roles": {
+    "name": {
+      "en": "Roles",
+      "ar": "الادوار"
+    },
+    "add": {
+      "en": "+ Add Role",
+      "ar": "+ اضافة دور"
+    },
+    "username": {
+      "en": "Username",
+      "ar": "اسم المستخدم"
+    },
+    "email": {
+      "en": "Email",
+      "ar": "البريد الالكترونى"
+    },
+    "role": {
+      "en": "Role",
+      "ar": "الدور"
+    },
+    "user": {
+      "en": "User",
+      "ar": "المستخدم"
+    },
+    "or": {
+      "en": "or",
+      "ar": "او"
+    },
+    "save": {
+      "en": "Save changes",
+      "ar": "حفظ"
+    },
+    "cancel": {
+      "en": "Cancel",
+      "ar": "الغاء"
+    },
+    "admin": {
+      "en": "Admin",
+      "ar": "مدير"
+    },
+    "error": {
+      "en": "User was not found",
+      "ar": "لا يوجد مستخدم بهذه البيانات"
+    }
+  },
+  "search": {
+    "result": {
+      "en": " Search results for",
+      "ar": "نتيجة بحثك عن"
+    },
+    "sort": {
+      "name": {
+        "en": "Sort by",
+        "ar": "ترتيب حسب"
+      },
+      "topRated": {
+        "en": "Top Rated",
+        "ar": "الأعلي تقيم"
+      },
+      "lowPrice": {
+        "en": "Lowest Price",
+        "ar": "الأقل سعر"
+      },
+      "highPrice": {
+        "en": "Highest Price",
+        "ar": "الأعلي سعر"
+      }
+    },
+    "details": {
+      "en": "See Details",
+      "ar": "عرض التفاصيل"
+    },
+    "showMore": {
+      "en": "+ Show more",
+      "ar": "+ اظهار المزيد"
+    }
+  }
+}
