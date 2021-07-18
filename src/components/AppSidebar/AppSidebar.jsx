@@ -5,77 +5,80 @@ import { Link } from 'react-router-dom';
 
 import SidebarMenu from './AppSlidebar.styles';
 import { changeLanguage } from '../../redux/actions/language';
+import { toggleSideBar } from '../../redux/actions/sideBarOn';
+import { staticText } from '../../utils/data';
 
-const AppSidebar = ({ children, language, changeLanguage }) => {
+const AppSidebar = ({
+  children,
+  language,
+  changeLanguage,
+  toggleSideBar,
+  sideBarOn
+}) => {
+  const { sidebar } = staticText;
+
   return (
     <Sidebar.Pushable>
       <Sidebar
         as={'aside'}
         animation="slide along"
         vertical="true"
-        visible={true}
-        onHide={() => {}}
+        visible={sideBarOn}
+        onHide={toggleSideBar}
+        direction={language === 'ar' ? 'right' : 'left'}
       >
         <SidebarMenu>
           <section>
             <div className="sidebar-items">
-              <Link to="/" className="sidebar-item">
-                Home
-              </Link>
-              <Link to="/account" className="sidebar-item">
-                My Account
-              </Link>
-              <Link to="/signin" className="sidebar-item">
-                Sign in
-              </Link>
-              <Link to="/signup" className="sidebar-item">
-                Sign up
-              </Link>
+              {sidebar.general.items.map(item => (
+                <Link key={item.slug} to={item.slug} className="sidebar-item">
+                  {item[language]}
+                </Link>
+              ))}
             </div>
           </section>
 
           <section>
-            <h4>Categories</h4>
+            <h4>{sidebar.categories.title[language]}</h4>
             <div className="sidebar-items">
-              <span className="sidebar-item">Mobiles</span>
-              <span className="sidebar-item">Computers</span>
-              <span className="sidebar-item">Sports</span>
-              <span className="sidebar-item">Fashion</span>
+              {sidebar.categories.items.map(item => (
+                <span key={item['en']} className="sidebar-item">
+                  {item[language]}
+                </span>
+              ))}
             </div>
           </section>
 
           <section>
-            <h4>Language</h4>
+            <h4>{sidebar.languages.title[language]}</h4>
             <div className="sidebar-items">
-              {language === 'en' ? (
-                <span
-                  onClick={() => changeLanguage(changeLanguage('ar'))}
-                  className="sidebar-item"
-                >
-                  العربية
-                </span>
-              ) : (
-                <span
-                  onClick={() => changeLanguage(changeLanguage('en'))}
-                  className="sidebar-item"
-                >
-                  English
-                </span>
+              {sidebar.languages.items.map(
+                ({ key, name }) =>
+                  key !== language && (
+                    <span
+                      key={key}
+                      onClick={() => changeLanguage(key)}
+                      className="sidebar-item"
+                    >
+                      {name}
+                    </span>
+                  )
               )}
             </div>
           </section>
         </SidebarMenu>
       </Sidebar>
 
-      <Sidebar.Pusher dimmed={true}>{children}</Sidebar.Pusher>
+      <Sidebar.Pusher dimmed={sideBarOn}>{children}</Sidebar.Pusher>
     </Sidebar.Pushable>
   );
 };
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({ language, sideBarOn }) => ({ language, sideBarOn });
 
 const mapDispatchToProps = dispatch => ({
-  changeLanguage: lang => dispatch(changeLanguage(lang))
+  changeLanguage: lang => dispatch(changeLanguage(lang)),
+  toggleSideBar: () => dispatch(toggleSideBar())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppSidebar);

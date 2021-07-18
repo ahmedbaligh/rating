@@ -142,6 +142,33 @@
       }
     }
   ],
+  "sidebar": {
+    "general": {
+      "items": [
+        { "en": "Home", "ar": "الصفحة الرئيسية", "slug": "" },
+        { "en": "My Account", "ar": "حسابي", "slug": "account" },
+        { "en": "Sign in", "ar": "تسجيل الدخول", "slug": "signin" },
+        { "en": "Sign up", "ar": "إنشاء حساب", "slug": "signup" },
+        { "en": "Admin Panel", "ar": "المسئولون", "slug": "admin-panel" }
+      ]
+    },
+    "categories": {
+      "title": { "en": "Categories", "ar": "الفئات" },
+      "items": [
+        { "en": "Computers", "ar": "الحواسيب" },
+        { "en": "Mobile Phones", "ar": "الهواتف المحمولة" },
+        { "en": "Sports", "ar": "الرياضة" },
+        { "en": "Fashion", "ar": "الموضة" }
+      ]
+    },
+    "languages": {
+      "title": { "en": "Languages", "ar": "اللغات" },
+      "items": [
+        { "key": "en", "name": "English" },
+        { "key": "ar", "name": "العربية" }
+      ]
+    }
+  },
   "home": {
     "hero": {
       "brandText": [
