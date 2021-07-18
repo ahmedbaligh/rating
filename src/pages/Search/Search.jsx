@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-import { searchByKeyword } from '../../utils/api';
+import { search, getCategoryTree } from '../../utils/api';
 import { toggleLoading } from '../../redux/actions/loading';
 import { extractFilters, filterProducts } from '../../utils/helpers/helpers';
 
@@ -47,9 +48,12 @@ const Search = ({ toggleLoading, language }) => {
   ];
   const [sortAtrr, setSortAtrr] = useState(sortOpts[0].value);
 
+  const [categoryTree, setCategoryTree] = useState([]);
+
   useEffect(() => {
+    console.log(category);
     toggleLoading(true);
-    searchByKeyword({ keyword, maxCount: MAX_COUNT, page: page })
+    search({ keyword, maxCount: MAX_COUNT, page: page, category })
       .then(res => {
         setAllProducts(prev => [...prev, ...res.data.result.items]);
         if (res.data.result.totalCount < MAX_COUNT) setLastPage(true);
@@ -60,6 +64,14 @@ const Search = ({ toggleLoading, language }) => {
   useUpdate(() => {
     setFilterNames(extractFilters(allProducts));
   }, [allProducts]);
+
+  useEffect(() => {
+    if (category) {
+      getCategoryTree(category).then(res => {
+        setCategoryTree(res);
+      });
+    }
+  }, [category]);
 
   const onChange = (e, { value, checked, name }) => {
     e.preventDefault();
@@ -112,36 +124,38 @@ const Search = ({ toggleLoading, language }) => {
     <>
       <Result>
         <div className="filters-container">
-          <div className="filter">
-            <h3>Categories</h3>
-            <ul className="values">
-              {filterNames.categories?.map((category, i) => (
-                <li
-                  className={
-                    appliedFilters.category === category ? 'active' : ''
-                  }
-                  key={`fltrctgry${category}${i}`}
-                  onClick={() =>
-                    setAppliedFilters({ ...appliedFilters, category })
-                  }
-                >
-                  {category}
-                </li>
-              ))}
-              {appliedFilters.category ? (
-                <button
-                  className="clear-btn"
-                  onClick={() =>
-                    setAppliedFilters({ ...appliedFilters, category: '' })
-                  }
-                >
-                  clear
-                </button>
-              ) : (
-                ''
-              )}
-            </ul>
-          </div>
+          {!category && (
+            <div className="filter">
+              <h3>Categories</h3>
+              <ul className="values">
+                {filterNames.categories?.map((category, i) => (
+                  <li
+                    className={
+                      appliedFilters.category === category ? 'active' : ''
+                    }
+                    key={`fltrctgry${category}${i}`}
+                    onClick={() =>
+                      setAppliedFilters({ ...appliedFilters, category })
+                    }
+                  >
+                    {category}
+                  </li>
+                ))}
+                {appliedFilters.category ? (
+                  <button
+                    className="clear-btn"
+                    onClick={() =>
+                      setAppliedFilters({ ...appliedFilters, category: '' })
+                    }
+                  >
+                    clear
+                  </button>
+                ) : (
+                  ''
+                )}
+              </ul>
+            </div>
+          )}
 
           <div className="filters">
             <h3>Filters</h3>
@@ -184,9 +198,20 @@ const Search = ({ toggleLoading, language }) => {
         <div className="result-container">
           <div className="card-list">
             <div className="result-header">
-              <span>
-                {staticText.search.result[language]} <b>{keyword}</b>
-              </span>
+              {category ? (
+                <div className="category-tree">
+                  {categoryTree.map((cat, i) => (
+                    <span key={`categ${cat.id}`}>
+                      {i !== 0 && '>'}
+                      <Link to={`/search/category/${cat.id}`}>{cat.name}</Link>
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                <span>
+                  {staticText.search.result[language]} <b>{keyword}</b>
+                </span>
+              )}
               <div className="result-sort">
                 {staticText.search.sort.name[language]}
                 <Dropdown

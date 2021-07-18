@@ -102,7 +102,7 @@ const Product = ({ language }) => {
               {categoryTree.map((cat, i) => (
                 <span key={`categ${cat.id}`}>
                   {i !== 0 && '>'}
-                  <Link to={`/category/${cat.name}`}>{cat.name}</Link>
+                  <Link to={`/search/category/${cat.id}`}>{cat.name}</Link>
                 </span>
               ))}
             </CategoryTree>

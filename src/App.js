@@ -70,7 +70,7 @@ const App = ({
             '/product/:slug',
             '/404',
             '/search/:keyword',
-            '/search/:category',
+            '/search/category/:category',
             '/signin',
             '/signup',
             '/faq'
@@ -104,7 +104,10 @@ const App = ({
             <Signin />
           </Route>
 
-          <Route exact path={['/search/:keyword', '/search/:category']}>
+          <Route
+            exact
+            path={['/search/:keyword', '/search/category/:category']}
+          >
             <Search />
           </Route>
 
@@ -121,7 +124,7 @@ const App = ({
             '/',
             '/product/:slug',
             '/search/:keyword',
-            '/search/:category',
+            '/search/category/:category',
             '/signup',
             '/signup',
             '/faq'

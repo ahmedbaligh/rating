@@ -90,6 +90,28 @@ export default styled.main`
         justify-content: space-between;
         color: ${({ theme }) => (theme.dark ? theme.white900 : theme.gray800)};
 
+        .category-tree {
+          display: flex;
+          gap: 9px;
+          font-size: 1rem;
+          font-weight: 400;
+          color: ${({ theme }) => (theme.dark ? theme.gray100 : theme.gray800)};
+          transition: color 0.5s;
+          a {
+            text-decoration: underline;
+            color: inherit;
+            transition: color 0.5s;
+          }
+          span {
+            display: flex;
+            gap: 9px;
+            &:last-child a {
+              color: ${({ theme }) =>
+                theme.dark ? theme.white900 : theme.blue500};
+            }
+          }
+        }
+
         .result-sort {
           display: flex;
           align-items: center;
